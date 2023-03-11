@@ -1,0 +1,37 @@
+.starter {
+    height: 100vh;
+    position: relative;
+    background-color: green;
+    .scrolldown {
+        font-size: 10px;
+        position: absolute;
+        top: 92%;
+        animation: float 2s cubic-bezier(0.280, 0.840, 0.420, 1) infinite;
+    }
+}
+
+.spazio {height: 7px;}
+
+#content {
+    color: lightblue;
+    height: 100vh;
+    h1, .app {
+        font-family: 'Rampart One', cursive;
+    }
+
+    h1 { font-size: 40px; }
+
+    .button {
+        text-decoration: none;
+        color: lightblue;
+        border: 2px solid lightblue;
+        border-radius: 50px;
+        width: 200px;
+        transition: 0.5s ease;
+        &:hover {
+            background-color: lightblue;
+            color: white;
+        }
+    }
+}
+

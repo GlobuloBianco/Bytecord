@@ -23,7 +23,7 @@ export class AppComponent {
     }
 
     showNavbar(url: string): boolean {
-        if (url === '/login' || url === '/') {
+        if (url.startsWith('/login') || url.startsWith('/')) {
             return false;
         } else {
             return true;
