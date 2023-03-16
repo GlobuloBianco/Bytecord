@@ -1,16 +1,17 @@
 <main class="container d-flex">
     <div>
         <div>
-            <h1>Login</h1>
+            <h1>Sign up</h1>
         </div>
 
         <form (ngSubmit)="onSubmit()">
             <input type="text" id="Username" name="Username" [(ngModel)]="username" placeholder="Username" required>
+            <input type="email" id="Email" name="Email" [(ngModel)]="email" placeholder="Email" required>
             <input type="password" id="Password" name="Password" [(ngModel)]="password" placeholder="Password" required>
             <fieldset>
-                <p>Don't have an account? <a href="/signup"> Sign up here!</a></p>
+                <p>Have already an account? <a href="/login"> Login here!</a></p>
             </fieldset>
-            <button type="submit">Login</button>
+            <button type="submit">Sign up</button>
         </form>
     </div>
 
