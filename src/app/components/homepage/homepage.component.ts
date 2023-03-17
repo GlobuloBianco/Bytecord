@@ -14,9 +14,7 @@ export class HomepageComponent implements OnInit {
     constructor(private authServ: AuthService) {}
 
 
-    ngOnInit(): void {
-
-    }
+    ngOnInit(): void { }
 
     logout() {
         this.authServ.logout();

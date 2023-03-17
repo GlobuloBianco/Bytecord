@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -27,13 +27,23 @@ export class AuthService {
     }
 
     isLogged(): boolean {
-        const token = this.getToken();
-        // se non è presente
-        if (!token) {
+        const token: string | null = this.getToken();
+
+        // se non c'è il token
+        if (token === null || token == "") {
             return false;
         }
-        return true
-
+        // verifica validità token
+        this.http.post<boolean>(this.url + '/api/auth/verify', token).subscribe(
+            response => {
+                if(response === true) {
+                    return true;
+                } else {
+                    console.log("Accesso non autorizzato, Token non valido o inesistente")
+                    return false;
+                }
+            }
+        );
+        return true;
     }
-
 }
