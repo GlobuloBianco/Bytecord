@@ -8,7 +8,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class AppComponent {
     statusNavbar = true;
-
+    urlFE = 'http/localhost:4200';
     constructor(private router: Router) { }
 
     ngOnInit() {
@@ -23,7 +23,7 @@ export class AppComponent {
     }
 
     showNavbar(url: string): boolean {
-        if (url.startsWith('/login') || url.startsWith('/')) {
+        if (url.startsWith('/login') || url.startsWith('/signup') || url.endsWith('/') || url.endsWith('#content')) {
             return false;
         } else {
             return true;

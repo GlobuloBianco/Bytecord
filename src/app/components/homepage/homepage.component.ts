@@ -10,13 +10,11 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HomepageComponent implements OnInit {
 
-
-    constructor(private authServ: AuthService) {}
-
+    constructor(private authServ: AuthService) { }
 
     ngOnInit(): void { }
 
-    logout() {
-        this.authServ.logout();
+    addEmoji() {
+        alert("patata")
     }
 }

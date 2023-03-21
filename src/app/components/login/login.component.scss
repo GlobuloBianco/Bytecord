@@ -1,0 +1,26 @@
+.body {
+    background: #2b343d;
+    background: linear-gradient(143deg, #1d232a 12%, #0e0e0e 100%);
+    height: 100vh;
+    main {
+        background-color: #ffffffd1;
+        aspect-ratio: 1;
+        padding: 2em;
+    }
+}
+
+.formField {
+    position: relative;
+    display: flex;
+    i {
+        padding-left: 0.6em;
+        position: absolute;
+        top: 5px;
+    }
+    input {
+        width: 100%;
+        padding: 0.2em 0.5em;
+        padding-left: 2em;
+        margin-bottom: 1em;
+    }
+}

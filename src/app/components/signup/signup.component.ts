@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-signup',
@@ -11,7 +12,7 @@ export class SignupComponent implements OnInit {
     email: string = "";
     username: string = "";
     password: string = "";
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private router:Router) { }
 
     ngOnInit(): void {
     }
@@ -21,6 +22,7 @@ export class SignupComponent implements OnInit {
         this.http.post('http://localhost:8080/api/auth/signup', body).subscribe(
             response => {
                 console.log("successo");
+                this.router.navigate(['/login']);
             },
             error => {
                 console.log("fallito");

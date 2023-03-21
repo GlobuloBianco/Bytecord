@@ -1,22 +1,35 @@
-<main class="container d-flex">
-    <div>
+<div class="body d-flex align-items-center">
+    <main class="container d-flex justify-content-center align-items-center">
         <div>
-            <h1>Sign up</h1>
+            <div>
+                <h1  class="text-center">SIGN UP</h1>
+            </div>
+
+            <form (ngSubmit)="onSubmit()" class="d-flex flex-column">
+                <div class="formField">
+                    <i class="bi bi-person-circle"></i>
+                <input type="text" id="Username" name="Username" [(ngModel)]="username" placeholder="Username" required>
+                </div>
+                <div class="formField">
+                    <i class="bi bi-person-circle"></i>
+                <input type="email" id="Email" name="Email" [(ngModel)]="email" placeholder="Email" required>
+                </div>
+                <div class="formField">
+                    <i class="bi bi-person-circle"></i>
+                <input type="password" id="Password" name="Password" [(ngModel)]="password" placeholder="Password"
+                    required>
+                </div>
+
+                <fieldset>
+                    <p>Have already an account? <a routerLink="/login"> Login here!</a></p>
+                </fieldset>
+                <button type="submit">Sign up</button>
+            </form>
         </div>
 
-        <form (ngSubmit)="onSubmit()">
-            <input type="text" id="Username" name="Username" [(ngModel)]="username" placeholder="Username" required>
-            <input type="email" id="Email" name="Email" [(ngModel)]="email" placeholder="Email" required>
-            <input type="password" id="Password" name="Password" [(ngModel)]="password" placeholder="Password" required>
-            <fieldset>
-                <p>Have already an account? <a href="/login"> Login here!</a></p>
-            </fieldset>
-            <button type="submit">Sign up</button>
-        </form>
-    </div>
+        <!--foto-->
+        <div class="foto">
 
-    <!--foto-->
-    <div class="foto">
-
-    </div>
-</main>
+        </div>
+    </main>
+</div>

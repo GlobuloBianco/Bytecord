@@ -1,6 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpInterceptor } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { catchError, map, Observable, of } from 'rxjs';
+import { AuthInterceptor } from '../interceptors/auth.interceptor';
 
 
 @Injectable({
@@ -9,41 +11,54 @@ import { Router } from '@angular/router';
 export class AuthService {
     //url Backend
     private readonly url: string = 'http://localhost:8080';
+    public logged: boolean = false;
 
     constructor(private http: HttpClient, private router: Router) { }
-
 
     login(dati: { username: string, password: string }) {
         return this.http.post<any>(this.url + '/api/auth/signin', dati);
     }
 
-    logout(): void {
-        localStorage.removeItem('token');
-        this.router.navigate(['/']);
+    logout() {
+    // l'header
+    const httpOptions = {
+        headers: new HttpHeaders({
+            'Authorization': `Bearer ${this.getToken()}`
+        })
+    };
+
+    // effettua la richiesta di logout al server
+    this.http.post(this.url + '/api/auth/logout', {}, httpOptions).subscribe(
+        () => {
+            console.log('Logout effettuato con successo');
+            this.removeToken();
+            this.router.navigate(['/']);
+        },
+        (error) => {
+            console.log('Errore durante il logout:', error);
+        }
+    );
+}
+
+    removeToken():void {
+        sessionStorage.removeItem('token');
     }
 
     getToken(): string | null {
-        return localStorage.getItem('token');
+        return sessionStorage.getItem('token');
     }
 
-    isLogged(): boolean {
-        const token: string | null = this.getToken();
-
-        // se non c'è il token
-        if (token === null || token == "") {
-            return false;
+    isLogged(): Observable<boolean> {
+        const token = this.getToken();
+        if (!token) {
+            return of(false);
         }
-        // verifica validità token
-        this.http.post<boolean>(this.url + '/api/auth/verify', token).subscribe(
-            response => {
-                if(response === true) {
-                    return true;
-                } else {
-                    console.log("Accesso non autorizzato, Token non valido o inesistente")
-                    return false;
-                }
-            }
+
+        return this.http.post<boolean>(`${this.url}/api/auth/verify`, { token }).pipe(
+            catchError(() => of(false))
         );
-        return true;
     }
+
+
+
 }
