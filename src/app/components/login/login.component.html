@@ -5,7 +5,7 @@
                 <h1 class="text-center">SIGN IN</h1>
             </div>
 
-            <form (ngSubmit)="onSubmit()" class="d-flex flex-column">
+            <form #login="ngForm" (ngSubmit)="onSubmit(login)" class="d-flex flex-column loginForm">
                 <label for="Username">Username:</label>
                 <div class="formField">
                     <i class="bi bi-person-circle"></i>

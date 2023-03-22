@@ -23,7 +23,13 @@ export class AppComponent {
     }
 
     showNavbar(url: string): boolean {
-        if (url.startsWith('/login') || url.startsWith('/signup') || url.endsWith('/') || url.endsWith('#content')) {
+        if (
+            //inizio url
+            url.startsWith('/login') || url.startsWith('/signup') ||
+            //fine url
+            url.endsWith('/') || url.endsWith('#content')
+            ) {
+            //false = nascosto
             return false;
         } else {
             return true;

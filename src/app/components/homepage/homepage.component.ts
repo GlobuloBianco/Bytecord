@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,11 +9,42 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HomepageComponent implements OnInit {
 
-    constructor(private authServ: AuthService) { }
+    list: any[] = [""];
+    serverUrl = this.authServ.getServerUrl();
+    addInput = '';
 
-    ngOnInit(): void { }
+    constructor(private authServ: AuthService, private http: HttpClient) { }
 
+    ngOnInit(): void {
+        //ritorna gli emoji salvati nel database
+        this.emojiList();
+    }
+
+    //aggiunta emoji ----------------------
     addEmoji() {
-        alert("patata")
+        //test senza database
+        let value = this.addInput;
+        this.list.push(value);
+
+
+        this.addInput = '';
+    }
+
+    //aggiunta emoji dal database -------------------
+    emojiList() {
+
+        this.http.get(this.serverUrl + '/api/user/emoji').subscribe((data: any) => {
+            this.list = data;
+            //testing
+            console.log(data)
+        });
+    }
+
+    //salvataggio sul clipboard-------------------------
+    copyClipboard(emoji: any) {
+        // Copia sul clipboard
+        navigator.clipboard.writeText(emoji);
+
+        console.log('Copiato!');
     }
 }

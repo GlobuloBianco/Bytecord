@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import {NgForm} from '@angular/forms';
 
 @Component({
     selector: 'app-login',
@@ -9,17 +10,14 @@ import { AuthService } from 'src/app/services/auth.service';
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-    //form login
 
     constructor(private http: HttpClient, private router: Router, private authServ: AuthService) { }
 
-    ngOnInit(): void {
-    }
+    ngOnInit(): void {}
 
-    //form submit
-    onSubmit() {
+    onSubmit(login: NgForm) {
         this.login();
-
+        login.reset();
     }
 
     //login---------------------
@@ -38,6 +36,5 @@ export class LoginComponent implements OnInit {
                 error => {
                     console.log('Le credenziali non sono corrette');
                 })
-
     }
 }

@@ -18,6 +18,7 @@ export class AuthInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
         // aggiunge il token all'header
         this.token = this.authService.getToken();
+
         if (this.token) {
             request = request.clone({
                 setHeaders: {
@@ -25,11 +26,6 @@ export class AuthInterceptor implements HttpInterceptor {
                 }
             });
         }
-
         return next.handle(request);
-    }
-
-    resetToken(): void {
-        this.token = null;
     }
 }

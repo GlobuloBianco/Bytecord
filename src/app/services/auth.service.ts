@@ -15,20 +15,19 @@ export class AuthService {
 
     constructor(private http: HttpClient, private router: Router) { }
 
+    //-----------------------------------------------------------------//
+
+    getServerUrl(): string {
+        return  this.url;
+    }
+
     login(dati: { username: string, password: string }) {
         return this.http.post<any>(this.url + '/api/auth/signin', dati);
     }
 
     logout() {
-    // l'header
-    const httpOptions = {
-        headers: new HttpHeaders({
-            'Authorization': `Bearer ${this.getToken()}`
-        })
-    };
-
     // effettua la richiesta di logout al server
-    this.http.post(this.url + '/api/auth/logout', {}, httpOptions).subscribe(
+    this.http.post(this.url + '/api/auth/logout', {}).subscribe(
         () => {
             console.log('Logout effettuato con successo');
             this.removeToken();
@@ -58,7 +57,4 @@ export class AuthService {
             catchError(() => of(false))
         );
     }
-
-
-
 }
