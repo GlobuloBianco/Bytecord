@@ -12,13 +12,13 @@ export class SignupComponent implements OnInit {
     email: string = "";
     username: string = "";
     password: string = "";
-    constructor(private http: HttpClient, private router:Router) { }
+    constructor(private http: HttpClient, private router: Router) { }
 
     ngOnInit(): void {
     }
 
     onSubmit() {
-        const body = {email: this.email, username: this.username, password: this.password };
+        const body = { email: this.email, username: this.username, password: this.password };
         this.http.post('http://localhost:8080/api/auth/signup', body).subscribe(
             response => {
                 console.log("successo");
@@ -29,4 +29,7 @@ export class SignupComponent implements OnInit {
             }
         );
     }
+
+    //-----Validazione Form-----//
+
 }

@@ -2,22 +2,23 @@
     <main class="container d-flex justify-content-center align-items-center">
         <div>
             <div>
-                <h1  class="text-center">SIGN UP</h1>
+                <h1 class="text-center">SIGN UP</h1>
             </div>
 
             <form (ngSubmit)="onSubmit()" class="d-flex flex-column">
-                <div class="formField">
+                <div class="formField"> <!-- Username -->
                     <i class="bi bi-person-circle"></i>
-                <input type="text" id="Username" name="Username" [(ngModel)]="username" placeholder="Username" required>
+                    <input type="text" id="Username" name="Username" [(ngModel)]="username" placeholder="Username"
+                        required minlength="3">
                 </div>
-                <div class="formField">
+                <div class="formField"> <!-- Email -->
                     <i class="bi bi-person-circle"></i>
-                <input type="email" id="Email" name="Email" [(ngModel)]="email" placeholder="Email" required>
+                    <input type="email" id="Email" name="Email" [(ngModel)]="email" placeholder="Email" required>
                 </div>
-                <div class="formField">
+                <div class="formField"> <!-- Password -->
                     <i class="bi bi-person-circle"></i>
-                <input type="password" id="Password" name="Password" [(ngModel)]="password" placeholder="Password"
-                    required>
+                    <input type="password" id="Password" name="Password" [(ngModel)]="password" placeholder="Password"
+                        required>
                 </div>
 
                 <fieldset>
@@ -26,6 +27,8 @@
                 <button type="submit">Sign up</button>
             </form>
         </div>
+
+        <!--sfddsfsdfsdf-->
 
         <!--foto-->
         <div class="foto">

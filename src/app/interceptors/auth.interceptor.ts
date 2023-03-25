@@ -3,9 +3,10 @@ import {
     HttpRequest,
     HttpHandler,
     HttpEvent,
-    HttpInterceptor
+    HttpInterceptor,
+    HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of, throwError } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
 @Injectable()
@@ -16,7 +17,7 @@ export class AuthInterceptor implements HttpInterceptor {
     private token: string | null = null;
 
     intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-        // aggiunge il token all'header
+        // aggiunta del token all'header
         this.token = this.authService.getToken();
 
         if (this.token) {
@@ -26,6 +27,18 @@ export class AuthInterceptor implements HttpInterceptor {
                 }
             });
         }
-        return next.handle(request);
+        return next.handle(request).pipe(
+            catchError(error => {
+                //se l'errore deriva dalla scadenza token
+                if (error instanceof HttpErrorResponse && error.status === 403 && error.message.includes('/api/user/emoji')) {
+                    alert('Sessione Scaduta');
+                    this.removeToken(); // Rimuove il token scaduto "dall'interceptor"
+                    this.authService.logout();
+                }
+                return throwError(() => new Error('Errore! Si prega di rifare il login.'));
+            })
+        );
     }
+
+    removeToken = (): null => this.token = null;
 }

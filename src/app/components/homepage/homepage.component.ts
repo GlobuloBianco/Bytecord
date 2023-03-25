@@ -25,8 +25,6 @@ export class HomepageComponent implements OnInit {
         //test senza database
         let value = this.addInput;
         this.list.push(value);
-
-
         this.addInput = '';
     }
 
@@ -41,10 +39,5 @@ export class HomepageComponent implements OnInit {
     }
 
     //salvataggio sul clipboard-------------------------
-    copyClipboard(emoji: any) {
-        // Copia sul clipboard
-        navigator.clipboard.writeText(emoji);
-
-        console.log('Copiato!');
-    }
+    copyClipboard = (emoji: any) => navigator.clipboard.writeText(emoji);
 }

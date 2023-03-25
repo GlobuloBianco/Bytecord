@@ -1,60 +1,58 @@
-import { HttpClient, HttpHeaders, HttpInterceptor } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { catchError, map, Observable, of } from 'rxjs';
-import { AuthInterceptor } from '../interceptors/auth.interceptor';
 
-
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class AuthService {
-    //url Backend
-    private readonly url: string = 'http://localhost:8080';
-    public logged: boolean = false;
+    private readonly serverUrl: string = 'http://localhost:8080';
+    private readonly tokenHeader = 'token';
+    private readonly authState = new BehaviorSubject<boolean>(false);
 
-    constructor(private http: HttpClient, private router: Router) { }
+    constructor(private http: HttpClient, private router: Router) { this.updateState(); }
 
     //-----------------------------------------------------------------//
-
-    getServerUrl(): string {
-        return  this.url;
+    //-----Autenticazione-----//
+    login(dati: { username: string, password: string }): Observable<boolean> {
+        return this.http.post<{ token: string }>(`${this.serverUrl}/api/auth/signin`, dati)
+            .pipe( map(response => {
+                //storage del token
+                this.setToken(response.token);
+                this.updateState();
+                return true;
+            }),
+                catchError(() => of(false))
+            );
     }
 
-    login(dati: { username: string, password: string }) {
-        return this.http.post<any>(this.url + '/api/auth/signin', dati);
-    }
-
-    logout() {
-    // effettua la richiesta di logout al server
-    this.http.post(this.url + '/api/auth/logout', {}).subscribe(
-        () => {
-            console.log('Logout effettuato con successo');
-            this.removeToken();
-            this.router.navigate(['/']);
-        },
-        (error) => {
-            console.log('Errore durante il logout:', error);
-        }
-    );
-}
-
-    removeToken():void {
-        sessionStorage.removeItem('token');
-    }
-
-    getToken(): string | null {
-        return sessionStorage.getItem('token');
-    }
-
-    isLogged(): Observable<boolean> {
-        const token = this.getToken();
-        if (!token) {
-            return of(false);
-        }
-
-        return this.http.post<boolean>(`${this.url}/api/auth/verify`, { token }).pipe(
-            catchError(() => of(false))
+    logout(){
+        return this.http.post(`${this.serverUrl}/api/auth/logout`, {}).subscribe(
+            () => {
+                console.log('Logout effettuato con successo');
+                this.revokeToken();
+                this.updateState();
+                this.router.navigate(['/']);
+            },
+            (error) => console.log('Errore durante il logout')
         );
     }
+
+    //-----Shortcuts-----//
+    isLogged = (): Observable<boolean> => this.authState;
+
+    private updateState(): void {
+        const isLogged = Boolean(this.getToken());
+        this.authState.next(isLogged);
+    }
+
+    //-----Response-----//
+    badRequest = () => console.log("Credenziali non valide");
+
+    //-----Getters & Setters-----//
+    getServerUrl = (): string => this.serverUrl;
+
+    getToken = (): string | null => sessionStorage.getItem(this.tokenHeader);
+    setToken = (token: string): void => sessionStorage.setItem(this.tokenHeader, token);
+    revokeToken = (): void => sessionStorage.removeItem(this.tokenHeader);
 }

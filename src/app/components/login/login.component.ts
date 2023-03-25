@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import {NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
 @Component({
     selector: 'app-login',
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
     constructor(private http: HttpClient, private router: Router, private authServ: AuthService) { }
 
-    ngOnInit(): void {}
+    ngOnInit(): void { }
 
     onSubmit(login: NgForm) {
         this.login();
@@ -26,15 +26,12 @@ export class LoginComponent implements OnInit {
 
     login() {
         const dati = { username: this.username, password: this.password };
-            this.authServ.login(dati)
+        this.authServ.login(dati)
             .subscribe(response => {
-                // mettere nello localstorage il token
-                sessionStorage.setItem('token', response.token);
-                console.log('successo');
-                this.router.navigate(['/homepage']);
+                //nota: loggato = true
+                response == false ? this.authServ.badRequest() : this.router.navigate(['/homepage']);
             },
-                error => {
-                    console.log('Le credenziali non sono corrette');
-                })
+                error => { console.log('Errore nel login'); }
+            )
     }
 }
