@@ -1,5 +1,6 @@
 /* import dei font */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Luckiest+Guy&family=Rampart+One&display=swap');
+@import 'auth';
 
 body {
     background-color: #424549;
@@ -21,45 +22,5 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     &:hover,
     &active {
         text-decoration: underline;
-    }
-}
-
-
-// ------------ Auth ------------ //
-.auth {
-    .auth-icon,
-    .auth-input {
-        border: none;
-        background-color: white;
-        min-height: 40px;
-    }
-    .auth-icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        aspect-ratio: 1;
-        transform: translateX(2px);
-        padding-left: 1em;
-        border-radius: 20px 0 0 20px;
-        font-size: 1.2em;
-    }
-    .auth-input {
-        min-width: 250px;
-        padding: 0.5em;
-        padding-left: 15px;
-        border-radius: 0 20px 20px 0;
-        &:focus {
-            outline: none;
-        }
-    }
-    .auth-submit {
-        background-color: var(--main-color);
-        border-radius: 20px;
-        margin: 2em 0;
-        width: 150px;
-        padding: 0.5em;
-        &:disabled {
-            background-color: #ffffff29;
-        }
     }
 }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
     selector: 'app-signup',
@@ -16,25 +17,23 @@ export class SignupComponent implements OnInit {
     usernameValid: boolean = false;
     emailValid: boolean = false;
     passwordValid: boolean = false;
-    constructor(private http: HttpClient, private router: Router) { }
+    erroreUsername: boolean = false;
+    constructor(private http: HttpClient, private router: Router, private authServ: AuthService) { }
 
     ngOnInit(): void {
     }
 
     onSubmit() {
-        if (!(this.usernameValid && this.emailValid && this.passwordValid)) {
-            alert("Please enter valid input.");
-            return;
-          }
-
         const body = { email: this.email, username: this.username, password: this.password };
         this.http.post('http://localhost:8080/api/auth/signup', body).subscribe(
             response => {
-                console.log("successo");
                 this.router.navigate(['/login']);
             },
             error => {
-                console.log("fallito");
+                this.erroreUsername = true;
+                setTimeout(()=>{
+                    this.erroreUsername = false;
+                }, 2500);
             }
         );
     }
@@ -47,7 +46,11 @@ export class SignupComponent implements OnInit {
 
     //-----Validazione Regex-----//
     checkInput(input: string): boolean {
-        const regex = /^[a-zA-Z0-9]{3,16}$/; //solo numeri e lettere | min-max 3-16 caratteri
+        return this.authServ.checkInput(input);
+    }
+
+    checkEmail(input: string): boolean {
+        const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return regex.test(input);
     }
 }

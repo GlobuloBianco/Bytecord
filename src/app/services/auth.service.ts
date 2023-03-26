@@ -16,7 +16,7 @@ export class AuthService {
     //-----Autenticazione-----//
     login(dati: { username: string, password: string }): Observable<boolean> {
         return this.http.post<{ token: string }>(`${this.serverUrl}/api/auth/signin`, dati)
-            .pipe( map(response => {
+            .pipe(map(response => {
                 //storage del token
                 this.setToken(response.token);
                 this.updateState();
@@ -26,7 +26,7 @@ export class AuthService {
             );
     }
 
-    logout(){
+    logout() {
         return this.http.post(`${this.serverUrl}/api/auth/logout`, {}).subscribe(
             () => {
                 console.log('Logout effettuato con successo');
@@ -37,6 +37,14 @@ export class AuthService {
             (error) => console.log('Errore durante il logout')
         );
     }
+    //-----Validators-----//
+
+    //Regex
+    public checkInput(input: string): boolean {
+        const regex = /^[a-zA-Z0-9]{3,16}$/; //solo numeri e lettere | min-max 3-16 caratteri
+        return regex.test(input);
+    }
+
 
     //-----Shortcuts-----//
     isLogged = (): Observable<boolean> => this.authState;
@@ -45,9 +53,6 @@ export class AuthService {
         const isLogged = Boolean(this.getToken());
         this.authState.next(isLogged);
     }
-
-    //-----Response-----//
-    badRequest = () => console.log("Credenziali non valide");
 
     //-----Getters & Setters-----//
     getServerUrl = (): string => this.serverUrl;

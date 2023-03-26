@@ -35,7 +35,7 @@ export class AuthInterceptor implements HttpInterceptor {
                     this.removeToken(); // Rimuove il token scaduto "dall'interceptor"
                     this.authService.logout();
                 }
-                return throwError(() => new Error('Errore! Si prega di rifare il login.'));
+                return throwError(() => new Error('Errore nella richiesta.'));
             })
         );
     }

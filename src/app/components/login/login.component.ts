@@ -15,23 +15,36 @@ export class LoginComponent implements OnInit {
 
     ngOnInit(): void { }
 
-    onSubmit(login: NgForm) {
-        this.login();
-        login.reset();
-    }
-
     //login---------------------
     username: string = '';
     password: string = '';
+    showPassword: boolean = false;
+    usernameValid: boolean = false;
+    passwordValid: boolean = false;
+    erroreCredenziali: boolean = false;
 
-    login() {
+    onSubmit() {
         const dati = { username: this.username, password: this.password };
         this.authServ.login(dati)
             .subscribe(response => {
                 //nota: loggato = true
-                response == false ? this.authServ.badRequest() : this.router.navigate(['/homepage']);
-            },
-                error => { console.log('Errore nel login'); }
-            )
+                if (response == false) {
+                    this.erroreCredenziali = true;
+                    setTimeout(()=>{
+                        this.erroreCredenziali = false;
+                    }, 2500);
+                } else this.router.navigate(['/homepage']);
+            })
     }
+
+    togglePassword() {
+        let passwordCheck = document.getElementById('passwordCheck') as HTMLInputElement;
+        // show - hide password
+        !this.showPassword ? (passwordCheck.setAttribute('type', 'text'),this.showPassword = true) : (passwordCheck.setAttribute('type', 'password'),this.showPassword = false);
+    }
+
+        //-----Validazione-----//
+        checkInput(input: string): boolean {
+            return this.authServ.checkInput(input);
+        }
 }

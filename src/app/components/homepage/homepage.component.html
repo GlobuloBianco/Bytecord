@@ -8,11 +8,19 @@
     </div>
 
     <div class="result">
-        <div *ngFor="let emoji of list" class="cell">
-            <div (click)='copyClipboard(emoji)' >
-                <img [src]="emoji" class="img-fluid img">
+        <!-- Lista degli emoji -->
+        <div *ngFor="let emoji of emojiList">
+            <div  *ngIf="emoji != ''" class="cell">
+                <!-- Se non è vuoto allora metti in display-->
+                <div (click)='copyClipboard(emoji)'>
+                    <img [src]="emoji" class="img-fluid img">
+                </div>
             </div>
+        </div>
 
+
+        <div *ngIf="isEmpty">
+            <p>La tua lista è vuota</p>
         </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-<div class="body d-flex align-items-center">
+<div class="auth-body d-flex align-items-center">
     <main class="container d-flex justify-content-center align-items-center">
         <div>
             <!-- Logo-->
@@ -6,7 +6,7 @@
                 <img src="assets/logo/android-chrome-192x192.png" alt="bytecord logo" width="100px">
             </div>
             <div>
-                <h1 class="text-center fs-4">Create Account</h1>
+                <h2 class="text-center fs-4">Create Account</h2>
             </div>
             <!--Form-->
             <form (ngSubmit)="onSubmit()" class="d-flex flex-column justify-content-center auth">
@@ -16,14 +16,18 @@
                         <i class="bi bi-person auth-icon"></i>
                         <input type="text" class="auth-input" id="usernameCheck" name="username" [(ngModel)]="username" placeholder="Username" required (ngModelChange)="checkInput(username) && (usernameValid = true) || (usernameValid = false)">
                     </div>
+                    <!-- Errore -->
+                    <div *ngIf="erroreUsername">
+                        <p class="text-center text-danger">Username already registered.</p>
+                    </div>
                     <!-- Email-->
                     <div class="d-flex align-items-center my-3 outline">
                         <i class="bi bi-envelope auth-icon"></i>
-                        <input type="email" class="auth-input" id="emailCheck" name="email" [(ngModel)]="email" placeholder="Email" required (ngModelChange)="checkInput(email) && (emailValid = true) || (emailValid = false)">
+                        <input type="email" class="auth-input" id="emailCheck" name="email" [(ngModel)]="email" placeholder="Email" required (ngModelChange)="checkEmail(email) && (emailValid = true) || (emailValid = false)">
                     </div>
                     <!-- Password-->
                     <div class="d-flex align-items-center my-3 outline">
-                        <div  (click)="togglePassword()">
+                        <div (click)="togglePassword()" class="toggle">
                             <i class="bi bi-eye-slash auth-icon" *ngIf="!showPassword"></i>
                             <i class="bi bi-eye auth-icon" *ngIf="showPassword"></i>
                         </div>
@@ -35,15 +39,9 @@
                     <p>Have an account? <a routerLink="/login" class="link"> Sign In</a></p>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <button class="btn btn-outline-light auth-submit" type="submit" [disabled]="!(usernameValid && emailValid && passwordValid)" (click)="onSubmit()">SIGN UP</button>
+                    <button class="btn btn-outline-light auth-submit" type="submit" [disabled]="!(usernameValid && emailValid && passwordValid)">SIGN UP</button>
                 </div>
             </form>
-
-        </div>
-
-        <!--foto-->
-        <div class="foto">
-
         </div>
     </main>
 </div>
