@@ -9,16 +9,16 @@
 
     <div class="result">
         <!-- Lista degli emoji -->
-        <div *ngFor="let emoji of emojiList">
-            <div  *ngIf="emoji != ''" class="cell">
+        <div *ngFor="let emoji of displayList">
                 <!-- Se non è vuoto allora metti in display-->
+            <div *ngIf="emoji != '' " class="cell">
                 <div (click)='copyClipboard(emoji)'>
-                    <img [src]="emoji" class="img-fluid img">
+                    <img [src]="emoji" class="img-fluid img"
+                        onerror="this.src='assets/not-found.png'">
                 </div>
             </div>
         </div>
-
-
+        <!-- Messaggio lista vuota -->
         <div *ngIf="isEmpty">
             <p>La tua lista è vuota</p>
         </div>

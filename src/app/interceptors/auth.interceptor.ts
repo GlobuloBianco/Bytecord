@@ -30,7 +30,7 @@ export class AuthInterceptor implements HttpInterceptor {
         return next.handle(request).pipe(
             catchError(error => {
                 //se l'errore deriva dalla scadenza token
-                if (error instanceof HttpErrorResponse && error.status === 403 && error.message.includes('/api/user/emoji')) {
+                if (error instanceof HttpErrorResponse && error.status === 403 && error.message.includes('/api/user')) {
                     alert('Sessione Scaduta');
                     this.removeToken(); // Rimuove il token scaduto "dall'interceptor"
                     this.authService.logout();

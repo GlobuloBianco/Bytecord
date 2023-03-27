@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
@@ -8,13 +8,19 @@ import { AuthService } from './auth.service';
 })
 export class EmojiService {
 
-    serverUrl = this.authService.getServerUrl() + "/api/user";
+    serverUrl = this.authService.getServerUrl();
 
     constructor(private authService: AuthService, private http: HttpClient) { }
 
-    getEmojiList(userId: number): Observable<string[]> {
-        const url = `${this.serverUrl}/${userId}/emoji`;
+    //----- CRUD -----//
+    getEmojiList(userId: number): Observable<string> {
+        const url = `${this.serverUrl  + "/api/user"}/${userId}/emoji`;
+        return this.http.get(url, { responseType: 'text' });
+    }
 
-        return this.http.get<string[]>(url);
+    updateEmojiList(userId: number, emojiList: string): Observable<any> {
+        const url = `${this.serverUrl}/api/user/${userId}/emoji`;
+        const body = emojiList;
+        return this.http.post(url, body, { responseType: 'text' });
     }
 }
