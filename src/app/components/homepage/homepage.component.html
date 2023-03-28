@@ -1,20 +1,30 @@
 <div class="body mt-3 d-flex flex-column align-items-center">
 
     <div class="input-group mb-3 input">
+        <!-- Input -->
         <input type="text" [(ngModel)]="addInput" (keydown.enter)="addEmoji()" class="form-control"
             placeholder="Paste the url here!">
-        <button class="btn btn-outline-light" type="button" id="button-addon2" (click)="addEmoji()"><i
-                class="bi bi-plus-circle"></i></button>
+        <!-- Add -->
+        <button class="btn btn-outline-light" type="button" id="button-addon2" (click)="addEmoji()">
+            <i class="bi bi-plus-circle"></i>
+        </button>
+        <!-- Modifica -->
+        <a class="btn btn-outline-light modify ms-3" type="button" (click)="modify()">
+            <i class="bi bi-pencil-square"></i>
+        </a>
     </div>
 
     <div class="result">
         <!-- Lista degli emoji -->
         <div *ngFor="let emoji of displayList">
-                <!-- Se non è vuoto allora metti in display-->
-            <div *ngIf="emoji != '' " class="cell">
+            <!-- Se non è vuoto allora metti in display-->
+            <div *ngIf="emoji != '' " class="cell position-relative">
+                <!-- btn elimina -->
+                <span *ngIf="modifyFlag" (click)="delete(emoji)"
+                    class="position-absolute top-0 start-100 translate-middle fs-6 badge rounded-pill bg-danger">x</span>
+                <!-- Emoji in display-->
                 <div (click)='copyClipboard(emoji)'>
-                    <img [src]="emoji" class="img-fluid img"
-                        onerror="this.src='assets/not-found.png'">
+                    <img [src]="emoji" class="img-fluid ratio-1" onerror="this.src='assets/not-found.png'">
                 </div>
             </div>
         </div>

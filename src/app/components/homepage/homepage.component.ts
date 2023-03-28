@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { EmojiService } from 'src/app/services/emoji.service';
 import { UserService } from 'src/app/services/user.service';
@@ -15,8 +15,9 @@ export class HomepageComponent implements OnInit {
     isEmpty: boolean = false; // boolean lista
     serverUrl = this.authServ.getServerUrl(); // backend
     addInput = ''; // inputfield
+    modifyFlag: boolean = false; //modifica
 
-    constructor(private authServ: AuthService, private emojiService: EmojiService, private userService: UserService) { }
+    constructor(private authServ: AuthService, private emojiService: EmojiService, private userService: UserService, private renderer: Renderer2) { }
 
     ngOnInit(): void {
         this.getList(); //ritorna gli emoji salvati nel database
@@ -29,11 +30,8 @@ export class HomepageComponent implements OnInit {
             this.emojiService.getEmojiList(parseInt(id)).subscribe(
                 (response) => {
                     // check presenza
-                    response.length == 0 || response == "" || response == " " ? this.isEmpty = true : this.emojiList = response;
-                    console.log("risposta get: " + this.emojiList) //---------------- da rimuovere //---------------- da rimuovere //---------------- da rimuovere
-                    this.displayList  = this.emojiList.split(", ");
-                    console.log("convertito in array il get:")
-                    console.log(this.displayList) //---------------- da rimuovere //---------------- da rimuovere //---------------- da rimuovere
+                    response.length == 0 || response == "" || response == " " ? this.isEmpty = true : (this.emojiList = response.trim(), this.aggiorna());
+                    this.displayList = this.emojiList.split(", ");
                 }
             )
         })
@@ -48,18 +46,16 @@ export class HomepageComponent implements OnInit {
         if (emojiUrl.length >= 150) return alert("l'url è troppo grande! riprova un altro.");
 
         // rimozione di url discord invalidi
-        if (!emojiUrl.startsWith("https://cdn.discordapp.com/emojis/")) alert('Discord emoji invalido o corrotto :C prova un altro');
+        if (!emojiUrl.startsWith("https://cdn.discordapp.com/emojis/")) return alert('Discord emoji invalido o corrotto :C prova un altro');
 
         let result = [this.emojiList, emojiUrl].join(", ");
         result.trim();  //double check :)
         result.startsWith(",") ? (result = result.slice(1), result.trim) : null
-        console.log("Trimmato: " + result) //---------------- da rimuovere //---------------- da rimuovere //---------------- da rimuovere
 
         // Invia la richiesta POST al backend per aggiornare la lista dell'utente
         this.userService.getUserId().subscribe(userId => {
-            console.log("Id utente: " + userId) //---------------- da rimuovere //---------------- da rimuovere //---------------- da rimuovere
             this.emojiService.updateEmojiList(parseInt(userId), result).subscribe(
-                (response => { console.log(response) }))
+                (response => { }))
         });
 
         this.getList();
@@ -74,4 +70,26 @@ export class HomepageComponent implements OnInit {
         console.log("copiato");
     }
 
+    modify = () => this.modifyFlag = !this.modifyFlag;
+
+    delete(emoji: string) {
+
+        let lista = this.emojiList.split(", ");
+
+        //trova l'elemento e lo cancella
+        const index = lista.indexOf(emoji);
+        if (index !== -1) {
+            lista.splice(index, 1);
+        }
+
+        // rimuovere le [ ] e "  dalla stringa e aggiunta di spazio dopo ogni virgola.
+        this.emojiList = lista.join(', ').replace(/[\[\]"']/g, '');
+
+        //if (this.emojiList == null) this.emojiList = "";
+        this.userService.getUserId().subscribe(userId => {
+            this.emojiService.updateEmojiList(parseInt(userId), this.emojiList).subscribe(
+                (response => { }))
+        });
+        this.getList()
+    }
 }

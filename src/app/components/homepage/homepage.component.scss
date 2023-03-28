@@ -1,8 +1,17 @@
 .body {
+    overflow: auto;
     height: 100vh;
     margin: 2em;
     .input {
         width: 95%;
+    }
+    .modify {
+        border-radius: 20%;
+    }
+
+    .ratio-1 {
+        min-width: 48px;
+        aspect-ratio: 1;
     }
 
     .result {
@@ -28,12 +37,14 @@
             aspect-ratio: 1;
             width: 80px;
             background-color: wheat;
-
-            .img {
-                aspect-ratio: 1;
+            transition: 0.3s ease-out;
+            cursor: pointer;
+            &:hover {
+                transform: scale(1.1);
+            }
+            &:active {
+                transform: scale(0.7);
             }
         }
     }
-
-
 }
