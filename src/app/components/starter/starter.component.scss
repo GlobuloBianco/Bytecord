@@ -1,11 +1,57 @@
 .starter {
     height: 100vh;
     position: relative;
-    background-color: var(--main-color);
-    .scrolldown {
-        font-size: 10px;
+    background-color: var(--main-bg-color);
+    .hero{
         position: absolute;
-        top: 92%;
+        width: 100%;
+        top: 0;
+        height: 85vh;
+        padding: 1.5em;
+        .hero-content {
+            border-radius: 15px;
+            background-color: rgba(148, 144, 223, 0.049);
+            width: 100%;
+
+            .content {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                height: calc(80vh / 2);
+                .subtitle, .title {
+                    color: var(--main-color);
+                    font-family: 'Rampart One', cursive;
+                }
+                .title {
+                    margin: 0.5em 0;
+                    font-size: 4em;
+                }
+                .subtitle {
+                    text-align: center;
+                    font-size: 1.5em;
+                }
+
+            }
+        }
+    }
+    .navigation {
+        position: absolute;
+        top: 85%;
+
+        height: 15vh;
+    }
+    .scrolldown {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 75%;
+        font-size: 1.5em;
+        border-radius: 100%;
+        background-color: #ffffff56;
+        aspect-ratio: 1;
+        width: 50px;
         animation: float 2s cubic-bezier(0.280, 0.840, 0.420, 1) infinite;
     }
 }
@@ -13,7 +59,7 @@
 .spazio {height: 7px;}
 
 #content {
-    color: var(--main-color);
+    color: red;//var(--main-color);
     height: 100vh;
     h1, .app {
         font-family: 'Rampart One', cursive;
@@ -23,7 +69,7 @@
 
     .button {
         text-decoration: none;
-        color: var(--main-color);
+        color: red;//var(--main-color);
         border: 2px solid var(--main-color);
         border-radius: 50px;
         width: 200px;

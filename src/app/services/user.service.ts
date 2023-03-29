@@ -14,6 +14,14 @@ export class UserService {
     constructor(private http: HttpClient, private router: Router, private authService: AuthService) { }
 
     getUserId(): Observable<string> {
-        return this.http.get<string>(this.serverUrl + '/api/user/')
+        return this.http.get<string>(this.serverUrl + '/api/user/id')
+    }
+
+    getUserEmail(): Observable<string> {
+        return this.http.get<string>(this.serverUrl + '/api/user/email')
+    }
+
+    getUsername(): Observable<string> {
+        return this.http.get<string>(this.serverUrl + '/api/user/username')
     }
 }
