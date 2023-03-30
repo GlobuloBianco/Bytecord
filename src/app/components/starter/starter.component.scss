@@ -2,6 +2,8 @@
     height: 100vh;
     position: relative;
     background-color: var(--main-bg-color);
+    background: linear-gradient(180deg, #0c0a44 0%, #0b093c 20%, #060522 50%);
+
     .hero{
         position: absolute;
         width: 100%;
@@ -10,18 +12,15 @@
         padding: 1.5em;
         .hero-content {
             border-radius: 15px;
-            background-color: rgba(148, 144, 223, 0.049);
+            background-color: #9490df0c;
             width: 100%;
-
+            box-shadow: 1px 1px 20px #06003e;
             .content {
-                display: flex;
-                justify-content: center;
                 flex-direction: column;
-                align-items: center;
-                height: calc(80vh / 2);
+                height: calc(85vh / 2);
                 .subtitle, .title {
                     color: var(--main-color);
-                    font-family: 'Rampart One', cursive;
+                    font-family: var(--secondary-font);
                 }
                 .title {
                     margin: 0.5em 0;
@@ -31,53 +30,60 @@
                     text-align: center;
                     font-size: 1.5em;
                 }
-
             }
+        }
+    }
+    .scrolldown {
+        position: absolute;
+        top: 80%;
+        font-size: 1.5em;
+        border-radius: 100%;
+        background-color: #ffffff19;
+        aspect-ratio: 1;
+        width: 50px;
+        transition: 0.3s;
+        animation: float 2s cubic-bezier(0.280, 0.840, 0.420, 1) infinite;
+        &:hover, &:active {
+            background-color: #ffffff47;
+            cursor: pointer;
         }
     }
     .navigation {
         position: absolute;
-        top: 85%;
+        top: 92%;
+        height: 13vh;
+        padding: 0 2em;
 
-        height: 15vh;
-    }
-    .scrolldown {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: 75%;
-        font-size: 1.5em;
-        border-radius: 100%;
-        background-color: #ffffff56;
-        aspect-ratio: 1;
-        width: 50px;
-        animation: float 2s cubic-bezier(0.280, 0.840, 0.420, 1) infinite;
+        .link {
+            padding: 0.8em 1.2em;
+            border-radius: 50px;
+            color: var(--main-color);
+            font-size: 1.2em;
+            transition: 0.3s;
+            text-decoration: none;
+            &:nth-child(1) {
+                background-color: #ff000020;
+                &:hover, &:active { background-color: #ff000056; }
+                .bi {
+                    color: red;
+                    font-size: 1.1em;
+                }
+            }
+            &:nth-child(2) {
+                background-color: #00ff3c20;
+                &:hover, &:active { background-color: #00ff3356; }
+                .bi {
+                    color: lightgreen;
+                    font-size: 1.1em;
+                }
+            }
+        }
     }
 }
 
-.spazio {height: 7px;}
-
 #content {
     color: red;//var(--main-color);
+    background-color: var(--main-bg-color);
     height: 100vh;
-    h1, .app {
-        font-family: 'Rampart One', cursive;
-    }
-
-    h1 { font-size: 40px; }
-
-    .button {
-        text-decoration: none;
-        color: red;//var(--main-color);
-        border: 2px solid var(--main-color);
-        border-radius: 50px;
-        width: 200px;
-        transition: 0.5s ease;
-        &:hover {
-            background-color: var(--main-color);
-            color: white;
-        }
-    }
 }
 

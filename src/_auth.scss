@@ -1,8 +1,9 @@
 // ------------ Auth ------------ //
 .auth-body {
-    background: #2b343d;
-    background: linear-gradient(143deg, #1d232a 12%, #0e0e0e 100%);
+    background: var(--main-bg-color);
+    background: linear-gradient(180deg, #0c0a44 0%, #0b093c 20%, #060522 50%);
     height: 100vh;
+    font-family: var(--main-font);
     color: gray;
     user-select: none;
     overflow: hidden;
@@ -10,6 +11,11 @@
     img {
         -webkit-user-drag: none;
         user-select: none;
+        transition: .7s;
+        &:hover, &:active {
+            cursor: pointer;
+            transform:scale(1.1)
+        }
     }
 
     main {
@@ -18,7 +24,7 @@
     }
 
     a {
-        color: white;
+        color: var(--main-color)
     }
 
     .toggle:hover {
@@ -29,7 +35,7 @@
         .auth-icon,
         .auth-input {
             border: none;
-            background-color: white;
+            background-color: var(--secondary-bg-color);
             min-height: 40px;
         }
         .auth-icon {
@@ -52,13 +58,18 @@
             }
         }
         .auth-submit {
-            background-color: var(--main-color);
+            background-color: var(--main-bg-color);
             border-radius: 20px;
             margin: 2em 0;
             width: 150px;
             padding: 0.5em;
+            border: 3px solid var(--main-color);
+            color: var(--main-color);
+            transition: .7s;
             &:disabled {
-                background-color: #ffffff29;
+                background-color: #999999;
+                color: gray;
+                border: 3px dashed var(--main-color);
             }
         }
     }

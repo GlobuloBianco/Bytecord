@@ -2,23 +2,23 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Luckiest+Guy&family=Rampart+One&display=swap');
 @import 'auth';
 
-body {
-    background-color: #424549;
-    scroll-behavior: smooth;
-    font-family: 'DM Sans', sans-serif;
-}
-
-// colori
 :root {
     --main-color: white;
-    --main-contrast: #0505a1b3;
-    --main-bg-color: #06063db3;
-    --main-bg-contrast: white;
+    --main-bg-color: #060522;
+    --main-font: Roboto, "Helvetica Neue", sans-serif;
+
+    --secondary-color: #0505a1b3;
+    --secondary-bg-color: white;
+    --secondary-font:'Rampart One', cursive;
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
+body {
+    background-color: var(--main-bg-color);
+    scroll-behavior: smooth;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .link {
     text-decoration: none;
@@ -28,4 +28,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     }
 }
 
-
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

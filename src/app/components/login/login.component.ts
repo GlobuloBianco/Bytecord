@@ -23,6 +23,8 @@ export class LoginComponent implements OnInit {
     passwordValid: boolean = false;
     erroreCredenziali: boolean = false;
 
+    home = () => window.location.href = '/';
+
     onSubmit() {
         const dati = { username: this.username, password: this.password };
         this.authServ.login(dati)

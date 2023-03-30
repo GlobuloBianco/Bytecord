@@ -20,8 +20,9 @@ export class SignupComponent implements OnInit {
     erroreUsername: boolean = false;
     constructor(private http: HttpClient, private router: Router, private authServ: AuthService) { }
 
-    ngOnInit(): void {
-    }
+    ngOnInit(): void {}
+
+    home = () => window.location.href = '/';
 
     onSubmit() {
         const body = { email: this.email, username: this.username, password: this.password };

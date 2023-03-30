@@ -1,39 +1,29 @@
-<section class="starter d-flex justify-content-center flex-column align-items-center">
+<main class="starter flex-center flex-column ">
     <!-- Visibile iniziale -->
     <div class="hero">
-        <div class="hero-content d-flex justify-content-center align-items-center flex-wrap flex-column">
-            <div class="content">
+        <div class="hero-content flex-center flex-wrap flex-column">
+            <div class="content flex-center">
                 <h1 class="title">Bytecord</h1>
                 <p class="subtitle">Simplified Discord Emoji Management</p>
             </div>
             <div class="content">
-                <p> [ Foto da inserire ] </p>
+                <img src="https://picsum.photos/200" alt="" class="img-fluid">
             </div>
-
         </div>
     </div>
-    <div class="navigation d-flex justify-content-evenly w-100 align-items-start">
-        <a href="#" class="btn btn-outline-info">Boh da mettere</a>
-        <a routerLink="/homepage" class="btn btn-outline-success">Login in</a>
+    <!-- btn row -->
+    <div class="navigation d-flex justify-content-between w-100 align-items-start">
+        <a href="#" class="link"><i class="bi bi-bullseye me-2"></i>Lorem</a>
+        <a routerLink="/homepage" class="link"><i class="bi bi-box-arrow-in-left me-2"></i>Login in</a>
     </div>
     <!-- scrolldown icona -->
-    <div class="scrolldown">
-        <a href="#content"><i class="bi bi-caret-down text-light"></i></a>
-    </div>
-</section>
+    <div class="scrolldown flex-center" (click)="showMore()"><i class="bi bi-caret-down text-light"></i></div>
+</main>
 
-    <!-- Info extra -->
-<div class="spazio">&nbsp;</div>
-
-<div id="content" class="bg-light">
-
-    <p class="placeholder d-flex justify-content-center text-info"> placeholder </p>
-
-
+<!-- Info extra -->
+<section id="content" class="mt-5">
     <div class="container d-flex justify-content-center align-items-center flex-column text-center p-0">
-        <h1 class="m-0">BYTECORD</h1>
-        <p class="app fw-bold">Simplified Discord emoji management</p>
-        <a href="/homepage" class="button">Start Now <i class="bi bi-capsule"></i> </a>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam dolorum quia, consequuntur sunt reiciendis quibusdam incidunt nihil deleniti sed explicabo repellat assumenda, hic voluptatem molestiae illum natus, et magni eos!
     </div>
 
-</div>
+</section>
