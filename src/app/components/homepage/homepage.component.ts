@@ -41,20 +41,15 @@ export class HomepageComponent implements OnInit {
     addEmoji() {
         let emojiUrl = this.addInput.trim(); // per eventuali spazi extra
         this.addInput = '';
-
         // check length dell url
         if (emojiUrl.length >= 150) return alert("l'url è troppo grande! riprova un altro.");
-
         // rimozione di url discord invalidi
         if (!emojiUrl.startsWith("https://cdn.discordapp.com/emojis/")) return alert('Discord emoji invalido o corrotto :C prova un altro');
-
         let result = [this.emojiList, emojiUrl].join(", ");
         result.trim();  //double check :)
-        result.startsWith(",") ? (result = result.slice(1), result.trim) : null
-
+        result.startsWith(",") ? (result = result.slice(1), result.trim()) : null
         // Invia la richiesta POST al backend per aggiornare la lista dell'utente
         this.emojiService.updateEmojiList(result).subscribe((response => { }));
-
         this.aggiorna(); //check lista vuota
         this.getList();
     }
@@ -107,7 +102,7 @@ export class HomepageComponent implements OnInit {
             let result: string = "";
             //check null
             if (reader.result != null) {
-                const content: string = reader.result.toString();
+                const content: string = reader.result.toString().trim();
                 result = content;
             }
             //check validità
@@ -127,7 +122,6 @@ export class HomepageComponent implements OnInit {
     addImported() {
         const fixedList = this.emojiService.commaFix(this.importedList.toString());
         let result = [this.emojiList, fixedList].join(", ");
-
         this.emojiService.updateEmojiList(result).subscribe((response => { }));
         this.confirmMenu();
         this.toggleSettings();
@@ -137,6 +131,7 @@ export class HomepageComponent implements OnInit {
     export = () => {
         //creazione file txt
         let lista = this.emojiList;
+        lista.startsWith(",") ? (lista = lista.slice(1), lista.trim()) : lista.trim();
         let file = new Blob([lista], { type: 'text/plain' });
         //creazione esecuzione oggetto download
         let a = document.createElement("a");
@@ -147,8 +142,8 @@ export class HomepageComponent implements OnInit {
         a.click();
         //deleteAll la creazione
         setTimeout(() => {
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a),
+            window.URL.revokeObjectURL(url)
         }, 0);
     }
 
@@ -157,12 +152,15 @@ export class HomepageComponent implements OnInit {
         switch (tipo) {
             case "import": this.addImported();
                 break;
-            case "potato": console.log("patata");
-                break;
             default:
                 console.error("unknown type in confirm section ts.150");
         }
     }
 
     confirmNo = () => this.confirmMenu();
+
+    //shortcuts
+    timer(obj: any, timer: number) {
+
+    }
 }

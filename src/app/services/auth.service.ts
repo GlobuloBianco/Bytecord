@@ -29,7 +29,6 @@ export class AuthService {
     logout() {
         return this.http.post(`${this.serverUrl}/api/auth/logout`, {}).subscribe(
             () => {
-                console.log('Logout effettuato con successo');
                 this.revokeToken();
                 this.updateState();
                 this.router.navigate(['/']);

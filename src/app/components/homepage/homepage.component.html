@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <main class="body mt-3 d-flex flex-column align-items-center">
     <!---------------- ToolBar ---------------->
     <header class="d-flex justify-content-between w-100 p-2 mb-4">
@@ -51,7 +52,7 @@
         <div class="position-absolute top-0 end-0 m-4" (click)="toggleSettings()">
             <i class="bi bi-x fs-2"></i>
         </div>
-        <!-- Settings -->
+        <!---------- Settings ---------->
         <div *ngIf="!settingsConfirm" class="text-center d-flex flex-column">
             <h2 class="fs-1">Settings</h2>
             <!--Import-->
@@ -60,8 +61,7 @@
             <!--Export-->
             <button type="button" class="settingsBtn" (click)="export()">Export</button>
 
-
-            <button type="button" class="settingsBtn">Si</button>
+            <!--da continuare con altri btn-->
         </div>
 
         <!------------------ Confirm Menu ------------------>
@@ -76,6 +76,7 @@
                     <button type="button" class="btn btn-outline-success" (click)="confirmYes('import')">Yes</button>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

@@ -12,6 +12,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { Error404Component } from './auth/error404/error404.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
         StarterComponent,
         HomepageComponent,
         LoginComponent,
-        SignupComponent
+        SignupComponent,
+        Error404Component
     ],
     imports: [
         BrowserModule,

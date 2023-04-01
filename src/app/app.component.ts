@@ -11,28 +11,5 @@ export class AppComponent {
     urlFE = 'http/localhost:4200';
     constructor(private router: Router) { }
 
-    ngOnInit() {
-
-        // rileva il cambio di URL usando router.events
-        this.router.events.subscribe((event) => {
-            if (event instanceof NavigationEnd) {
-                // aggiorna lo status del navbar in base alla URL
-                this.statusNavbar = this.showNavbar(event.url);
-            }
-        });
-    }
-
-    showNavbar(url: string): boolean {
-        if (
-            //inizio url
-            url.startsWith('/login') || url.startsWith('/signup') ||
-            //fine url
-            url.endsWith('/') || url.endsWith('#content')
-            ) {
-            //false = nascosto
-            return false;
-        } else {
-            return true;
-        }
-    }
+    ngOnInit() { }
 }
