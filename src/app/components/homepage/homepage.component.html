@@ -1,6 +1,16 @@
-<div class="body mt-3 d-flex flex-column align-items-center">
-
-    <div class="input-group mb-3 input">
+<main class="body mt-3 d-flex flex-column align-items-center">
+    <!---------------- ToolBar ---------------->
+    <header class="d-flex justify-content-between w-100 p-2 mb-4">
+        <div>
+            <a class="select link"><i class="bi bi-box2-heart"></i> Packs</a>
+        </div>
+        <div>
+            <a class="select link" (click)="toggleSettings()"><i class="bi bi-gear"></i> Settings</a>
+            <a class="select link"><i class="bi bi-question-circle"></i> Help</a>
+        </div>
+    </header>
+    <!---------------- InputBar ---------------->
+    <section class="input-group mb-3 input">
         <!-- Input -->
         <input type="text" [(ngModel)]="addInput" (keydown.enter)="addEmoji()" class="form-control"
             placeholder="Paste the url here!">
@@ -12,10 +22,9 @@
         <a class="btn btn-outline-light modify ms-3" type="button" (click)="modify()">
             <i class="bi bi-pencil-square"></i>
         </a>
-    </div>
-
-    <div class="result">
-        <!-- Lista degli emoji -->
+    </section>
+    <!---------------- EmojiList ---------------->
+    <section class="result">
         <div *ngFor="let emoji of displayList">
             <!-- Se non è vuoto allora metti in display-->
             <div *ngIf="emoji != '' " class="cell position-relative">
@@ -31,6 +40,42 @@
         <!-- Messaggio lista vuota -->
         <div *ngIf="isEmpty">
             <p>La tua lista è vuota</p>
+        </div>
+    </section>
+</main>
+
+<!------------------ Pop up settings ------------------>
+<div *ngIf="settingsFlag" class="settings flex-center">
+    <div class="settingsBody flex-center flex-column position-relative">
+        <!-- Chiusura -->
+        <div class="position-absolute top-0 end-0 m-4" (click)="toggleSettings()">
+            <i class="bi bi-x fs-2"></i>
+        </div>
+        <!-- Settings -->
+        <div *ngIf="!settingsConfirm" class="text-center d-flex flex-column">
+            <h2 class="fs-1">Settings</h2>
+            <!--Import-->
+            <label for="fileInput" class="settingsBtn"><i class="bi bi-upload"></i> Import </label>
+            <input id="fileInput" class="d-none" type="file" (change)="selectedFile($event)">
+            <!--Export-->
+            <button type="button" class="settingsBtn" (click)="export()">Export</button>
+
+
+            <button type="button" class="settingsBtn">Si</button>
+        </div>
+
+        <!------------------ Confirm Menu ------------------>
+        <div *ngIf="settingsConfirm" class="text-center">
+            <h3 class="fs-1 text-center">Confirm</h3>
+
+            <!--import-confirm-->
+            <div *ngIf="importConfirm">
+                <p>Confirm import of <span class="text-info">{{ qty }}</span> emojis?</p>
+                <div class="d-flex justify-content-evenly">
+                    <button type="button" class="btn btn-outline-light" (click)="confirmNo()">No</button>
+                    <button type="button" class="btn btn-outline-success" (click)="confirmYes('import')">Yes</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
