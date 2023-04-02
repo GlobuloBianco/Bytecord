@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
     selector: 'app-navbar',
@@ -8,11 +9,20 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-    constructor(private authService: AuthService) { }
+    authorized: boolean = false;
 
-    ngOnInit(): void { }
+    constructor(private authService: AuthService, private userService: UserService) { }
 
-    logout() {
-        this.authService.logout();
+    ngOnInit(): void {
+        this.checkAuthorization();
+    }
+
+    logout = () => this.authService.logout();
+
+    checkAuthorization = () => {
+        this.userService.getAuthorization().subscribe(role => {
+            console.log(role);
+            (role == 'ADMIN') ? this.authorized = true : this.authorized = false;
+        });
     }
 }

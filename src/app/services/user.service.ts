@@ -1,7 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -11,17 +10,21 @@ export class UserService {
 
     private serverUrl = this.authService.getServerUrl();
 
-    constructor(private http: HttpClient, private router: Router, private authService: AuthService) { }
+    constructor(private http: HttpClient, private authService: AuthService) { }
 
     getUserId(): Observable<string> {
-        return this.http.get<string>(this.serverUrl + '/api/user/id')
+        return this.http.get<string>(this.serverUrl + '/api/user/id');
     }
 
     getUserEmail(): Observable<string> {
-        return this.http.get<string>(this.serverUrl + '/api/user/email')
+        return this.http.get(this.serverUrl + '/api/user/email', { responseType: 'text' });
     }
 
     getUsername(): Observable<string> {
-        return this.http.get<string>(this.serverUrl + '/api/user/username')
+        return this.http.get(this.serverUrl + '/api/user/username', { responseType: 'text' });
+    }
+
+    getAuthorization(): Observable<string> {
+        return this.http.get(this.serverUrl + '/api/user/role', { responseType: 'text' });
     }
 }

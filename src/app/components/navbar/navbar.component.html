@@ -1,4 +1,8 @@
 <header>
     <a routerLink="/" class="border-0"><img src="../../../assets/logo/android-chrome-192x192.png" alt="logo" width="70px"></a>
-    <a (click)="logout()">Logout <i class="bi bi-box-arrow-left"></i></a>
+    <div>
+        <a *ngIf="authorized" routerLink="/dashboard" class="link">Dashboard <i class="bi bi-clipboard-data"></i></a>
+        <a (click)="logout()" class="link">Logout <i class="bi bi-box-arrow-left"></i></a>
+    </div>
+
 </header>

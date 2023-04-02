@@ -2,10 +2,8 @@
 <main class="body mt-3 d-flex flex-column align-items-center">
     <!---------------- ToolBar ---------------->
     <header class="d-flex justify-content-between w-100 p-2 mb-4">
-        <div>
+        <div class="d-flex justify-content-center w-100">
             <a class="select link"><i class="bi bi-box2-heart"></i> Packs</a>
-        </div>
-        <div>
             <a class="select link" (click)="toggleSettings()"><i class="bi bi-gear"></i> Settings</a>
             <a class="select link"><i class="bi bi-question-circle"></i> Help</a>
         </div>
@@ -20,7 +18,7 @@
             <i class="bi bi-plus-circle"></i>
         </button>
         <!-- Modifica -->
-        <a class="btn btn-outline-light modify ms-3" type="button" (click)="modify()">
+        <a class="btn btn-outline-light modify ms-3" type="button" (click)="onModifyClick()">
             <i class="bi bi-pencil-square"></i>
         </a>
     </section>
@@ -39,8 +37,9 @@
             </div>
         </div>
         <!-- Messaggio lista vuota -->
-        <div *ngIf="isEmpty">
-            <p>La tua lista è vuota</p>
+        <div *ngIf="isEmpty" class="text-light text-center p-3 fs-4">
+            <p class="m-4">Oh no, it's empty in here!</p>
+            <p class="m-4">Quick, let's add some emoji to liven things up! <span><img src="assets/emoji.gif" width="24px"></span></p>
         </div>
     </section>
 </main>
@@ -49,7 +48,7 @@
 <div *ngIf="settingsFlag" class="settings flex-center">
     <div class="settingsBody flex-center flex-column position-relative">
         <!-- Chiusura -->
-        <div class="position-absolute top-0 end-0 m-4" (click)="toggleSettings()">
+        <div *ngIf="!settingsConfirm" class="position-absolute top-0 end-0 m-4" (click)="toggleSettings()">
             <i class="bi bi-x fs-2"></i>
         </div>
         <!---------- Settings ---------->
@@ -60,6 +59,8 @@
             <input id="fileInput" class="d-none" type="file" (change)="selectedFile($event)">
             <!--Export-->
             <button type="button" class="settingsBtn" (click)="export()">Export</button>
+            <!--DeleteAll-->
+            <button type="button" class="settingsBtn text-danger" (click)="deleteAll()">Delete Everything</button>
 
             <!--da continuare con altri btn-->
         </div>
@@ -75,6 +76,16 @@
                     <button type="button" class="btn btn-outline-light" (click)="confirmNo()">No</button>
                     <button type="button" class="btn btn-outline-success" (click)="confirmYes('import')">Yes</button>
                 </div>
+            </div>
+
+            <!--delete-confirm-->
+            <div *ngIf="deleteConfirm" class="flex-center fs-4 flex-column mx-3">
+                    <p class="mt-3">Are you sure you want to <span class="text-danger fw-bold">delete all</span> of your emojis?</p>
+                    <p class="mt-3 fs-6">(This action <span class="text-danger fw-bold">cannot</span> be undone once confirmed.)</p>
+                    <div class="d-flex justify-content-evenly">
+                        <button type="button" class="btn btn-outline-light" (click)="confirmNo()">No</button>
+                        <button type="button" class="btn btn-outline-success" (click)="confirmYes('deleteAll')">Yes</button>
+                    </div>
             </div>
 
         </div>

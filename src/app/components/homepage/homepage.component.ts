@@ -23,16 +23,18 @@ export class HomepageComponent implements OnInit {
 
     //------------ // ---------------[ Lista utente dal database ]--------------- //------------ //
     getList() {
-        //prende l'id dell'utente e prende la sua lista emoji
-        this.userService.getUserId().subscribe(id => {
-            this.emojiService.getEmojiList(parseInt(id)).subscribe(
-                (response) => {
-                    // check presenza
-                    response.length == 0 || response == "" ? this.isEmpty = true : (this.emojiList = response.trim(), this.aggiorna());
-                    this.displayList = this.emojiService.emojiToArray(this.emojiList);
-                }
-            )
-        })
+        //prende l'id dell'utente e prende la sua lista emoji (0.1s di deplay per l'operazione assincrona)
+        setTimeout(() => {
+            this.userService.getUserId().subscribe(id => {
+                this.emojiService.getEmojiList(parseInt(id)).subscribe(
+                    (response) => {
+                        // check presenza
+                        response.length == 0 || response == "" ? this.isEmpty = true : (this.emojiList = response.trim(), this.update());
+                        this.displayList = this.emojiService.emojiToArray(this.emojiList);
+                    }
+                )
+            })
+        }, 100);
     }
 
     //------------ // ---------------[ Aggiunta emoji ]--------------- //------------ //
@@ -50,11 +52,11 @@ export class HomepageComponent implements OnInit {
         result.startsWith(",") ? (result = result.slice(1), result.trim()) : null
         // Invia la richiesta POST al backend per aggiornare la lista dell'utente
         this.emojiService.updateEmojiList(result).subscribe((response => { }));
-        this.aggiorna(); //check lista vuota
+        this.update(); //check lista vuota
         this.getList();
     }
 
-    aggiorna = () => (this.isEmpty = this.emojiList.length == 0); // Vuoto = TRUE | Pieno = FALSE
+    update = () => (this.isEmpty = this.emojiList.length == 0); // Vuoto = TRUE | Pieno = FALSE
 
     // --------------- Salvataggio su clipboard --------------- //
     copyClipboard = (emoji: string) => {
@@ -67,7 +69,7 @@ export class HomepageComponent implements OnInit {
     settingsConfirm: boolean = false; //import menu
     modifyFlag: boolean = false; //modifica
 
-    modify = () => this.modifyFlag = !this.modifyFlag;
+    onModifyClick = () => this.modifyFlag = !this.modifyFlag;
     toggleSettings = () => this.settingsFlag = !this.settingsFlag;
     confirmMenu = () => this.settingsConfirm = !this.settingsConfirm;
 
@@ -123,7 +125,7 @@ export class HomepageComponent implements OnInit {
         const fixedList = this.emojiService.commaFix(this.importedList.toString());
         let result = [this.emojiList, fixedList].join(", ");
         this.emojiService.updateEmojiList(result).subscribe((response => { }));
-        this.confirmMenu();
+        this.confirmed();
         this.toggleSettings();
         this.getList();
     }
@@ -143,24 +145,38 @@ export class HomepageComponent implements OnInit {
         //deleteAll la creazione
         setTimeout(() => {
             document.body.removeChild(a),
-            window.URL.revokeObjectURL(url)
+                window.URL.revokeObjectURL(url)
         }, 0);
+    }
+    // --------------- DeleteAll --------------- //
+    deleteConfirm: boolean = false; //popup conferma
+    deleteAll = () => {
+        this.confirmMenu();
+        this.deleteConfirm = true;
+    }
+    deleted = () => {
+        this.emojiService.updateEmojiList(" ").subscribe((response => { }));
+        this.confirmed();
+        this.toggleSettings();
+        this.getList();
     }
 
     //------------ // ---------------[ Confirm Menu ]--------------- //------------ //
+    confirmed() {
+        this.confirmMenu();
+        this.importConfirm = false;
+        this.deleteConfirm = false;
+    }
+
     confirmYes(tipo: string) {
         switch (tipo) {
             case "import": this.addImported();
                 break;
+            case "deleteAll": this.deleted();
+                break;
             default:
-                console.error("unknown type in confirm section ts.150");
+                console.error("unknown type in Confirm section homepage.ts");
         }
     }
-
-    confirmNo = () => this.confirmMenu();
-
-    //shortcuts
-    timer(obj: any, timer: number) {
-
-    }
+    confirmNo = () => this.confirmed();
 }

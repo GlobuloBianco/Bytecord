@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
+import {
+    HttpRequest,
+    HttpHandler,
+    HttpEvent,
+    HttpInterceptor,
+    HttpErrorResponse
+} from '@angular/common/http';
 import { catchError, Observable, of, throwError } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
@@ -24,9 +30,12 @@ export class AuthInterceptor implements HttpInterceptor {
         }
         return next.handle(request).pipe(
             catchError(error => {
-                this.removeToken(); // Rimuove il token scaduto "dall'interceptor"
-                this.router.navigate(['/404/expired']);
-                return throwError(() => new Error('Sessione Scaduta.'));
+                //se l'errore deriva dalla scadenza token
+                if (error instanceof HttpErrorResponse && error.status === 403 && error.message.includes('/api/user')) {
+                    this.removeToken(); // Rimuove il token scaduto "dall'interceptor"
+                    this.router.navigate(['/404/expired']);
+                }
+                return throwError(() => new Error('Errore nella richiesta interceptor r.38:' + error.message));
             })
         );
     }

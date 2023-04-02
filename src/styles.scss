@@ -21,6 +21,7 @@ body {
 }
 
 .link {
+    cursor: pointer;
     text-decoration: none;
     &:hover,
     &active {
