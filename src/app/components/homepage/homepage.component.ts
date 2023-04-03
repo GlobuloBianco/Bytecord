@@ -39,14 +39,34 @@ export class HomepageComponent implements OnInit {
 
     //------------ // ---------------[ Aggiunta emoji ]--------------- //------------ //
     addInput = ''; // inputfield
+    erroreInput = '';
 
     addEmoji() {
         let emojiUrl = this.addInput.trim(); // per eventuali spazi extra
         this.addInput = '';
         // check length dell url
-        if (emojiUrl.length >= 150) return alert("l'url è troppo grande! riprova un altro.");
-        // rimozione di url discord invalidi
-        if (!emojiUrl.startsWith("https://cdn.discordapp.com/emojis/")) return alert('Discord emoji invalido o corrotto :C prova un altro');
+        if (emojiUrl.length >= 150) {
+            this.erroreInput = "The URL is too long! Please try another one.";
+            setTimeout(() => {
+                this.erroreInput = "";
+            }, 3000);
+            return;
+        }
+        // Remove invalid Discord URLs
+        if (emojiUrl.startsWith("https://discord.com/assets/")) {
+            this.erroreInput = "this emoji is already available by default! Please try another one.";
+            setTimeout(() => {
+                this.erroreInput = "";
+            }, 3000);
+            return;
+        }
+        if (!emojiUrl.startsWith("https://cdn.discordapp.com/emojis/")) {
+            this.erroreInput = "Invalid or corrupt Discord emoji :C Please try another one.";
+            setTimeout(() => {
+                this.erroreInput = "";
+            }, 3000);
+            return;
+        }
         let result = [this.emojiList, emojiUrl].join(", ");
         result.trim();  //double check :)
         result.startsWith(",") ? (result = result.slice(1), result.trim()) : null

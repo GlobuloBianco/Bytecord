@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+//---- components ----//
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { StarterComponent } from './components/starter/starter.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { Error404Component } from './auth/error404/error404.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { Error404Component } from './auth/error404/error404.component';
         HomepageComponent,
         LoginComponent,
         SignupComponent,
-        Error404Component
+        Error404Component,
+        DashboardComponent
     ],
     imports: [
         BrowserModule,

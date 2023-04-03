@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
     selector: 'app-starter',
@@ -7,10 +9,22 @@ import { Router } from '@angular/router';
     styleUrls: ['./starter.component.scss']
 })
 export class StarterComponent implements OnInit {
+    Login = "Login In";
+    constructor(private router: Router, private userService: UserService, private authService: AuthService) { }
 
-    constructor(private router: Router) { }
-
-    ngOnInit(): void { }
+    ngOnInit(): void {
+        this.isLogged();
+    }
 
     showMore = () => window.location.href = '#content';
+    isLogged() {
+        let compare: boolean = false;
+        this.authService.isLogged().subscribe(Response => compare = Response);
+        if(compare) {
+            this.userService.getUsername().subscribe(result => {
+                this.Login = result;
+            })
+        }
+
+    }
 }

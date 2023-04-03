@@ -3,11 +3,33 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1em 2em;
-    a {
+    .menuIcon {
         color: white;
         text-decoration: none;
         border: 2px solid white;
         padding: 0.5em 1em;
         border-radius: 50px;
     }
+    .menuOption {
+        width: 100%;
+        background-color: #00000004;
+        border-radius: 5px;
+        text-align: center;
+        color: black;
+        transition: 0.7s;
+        padding: 0.7em 1.3em;
+        margin: 0.2em;
+        &:hover, &:active {
+            text-decoration: none;
+            background-color: rgb(218, 218, 218);
+        }
+    }
+}
+
+
+
+
+.offcanvas {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }

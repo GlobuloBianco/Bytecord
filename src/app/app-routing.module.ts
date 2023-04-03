@@ -5,7 +5,9 @@ import { StarterComponent } from './components/starter/starter.component';
 import { Error404Component } from './auth/error404/error404.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import { AuthGuard } from './guards/auth-guard.guard';
+import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -13,8 +15,9 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'homepage', component: HomepageComponent, canActivate: [AuthGuard] },
+    { path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard] },
 
-    { path: '404/:reason', component: Error404Component},
+    { path: 'error/:reason', component: Error404Component},
     { path: '**', component: Error404Component}
 ];
 

@@ -8,7 +8,7 @@ import { UserService } from 'src/app/services/user.service';
     styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
+    username = "Profile";
     authorized: boolean = false;
 
     constructor(private authService: AuthService, private userService: UserService) { }
@@ -21,8 +21,16 @@ export class NavbarComponent implements OnInit {
 
     checkAuthorization = () => {
         this.userService.getAuthorization().subscribe(role => {
-            console.log(role);
             (role == 'ADMIN') ? this.authorized = true : this.authorized = false;
         });
+        this.setUsername();
     }
+
+    setUsername() {
+        this.userService.getUsername().subscribe(result => {
+            this.username = result;
+        })
+    }
+
+
 }

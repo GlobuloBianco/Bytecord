@@ -33,7 +33,7 @@ export class AuthInterceptor implements HttpInterceptor {
                 //se l'errore deriva dalla scadenza token
                 if (error instanceof HttpErrorResponse && error.status === 403 && error.message.includes('/api/user')) {
                     this.removeToken(); // Rimuove il token scaduto "dall'interceptor"
-                    this.router.navigate(['/404/expired']);
+                    this.router.navigate(['/error/expired']);
                 }
                 return throwError(() => new Error('Errore nella richiesta interceptor r.38:' + error.message));
             })
