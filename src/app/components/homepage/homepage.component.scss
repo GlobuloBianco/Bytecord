@@ -2,6 +2,10 @@
     overflow: auto;
     height: auto;
     margin: 2em;
+    .edit {
+        //edit mode
+        background-color: #fbff0048;
+    }
     // ---------- toolbar ---------- //
     .select {
         cursor: pointer;
@@ -131,7 +135,9 @@
     }
 }
 // ---------- Settings section ---------- //
-.settings {
+.settings,
+.packs,
+.help {
     color: var(--main-color);
     z-index: 3;
     width: 100%;
@@ -140,7 +146,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    .settingsBody {
+    .settingsBody,
+    .helpBody {
         width: 50vw;
         min-width: 320px;
         max-width: 400px;
@@ -178,17 +185,127 @@
         border-radius: 5px;
         border: 2px solid gray;
         background-color: #303030;
-        transition: .7s;
+        transition: 0.7s;
         cursor: pointer;
-        &:hover, &:active {
+        &:hover,
+        &:active {
             background-color: #4e5054;
         }
-        &:nth-last-child(1) {
-            font-weight: bold;
-            color: red;
-            border: 2px solid #ff00009d;
-            &:hover, &:active {
-                background-color: #ff000034;
+    }
+    .deleteYes {
+        font-weight: bold;
+        color: red;
+        border: 2px solid #ff00009d;
+        &:hover,
+        &:active {
+            background-color: #ff000034;
+        }
+    }
+    .importYes {
+        border: 2px solid #4da5c0;
+        color: #5bc0de;
+        &:hover,
+        &:active {
+            background-color: #00d9ff34;
+        }
+    }
+    // ---------- Pack section ---------- //
+    .packsBody {
+        // pack section //
+        .packSection {
+            margin-top: 5em;
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            .packsChoice {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                width: 100%;
+                background-color: #353535;
+                text-align: center;
+                padding: 1em;
+                color: white;
+                transition: 0.7s;
+                border: 4px solid transparent;
+                &:hover {
+                    background-color: #252525;
+                }
+            }
+            .active {
+                background-color: #181818;
+                border: 4px solid white;
+                border-radius: 5px;
+            }
+        }
+        .packsList {
+            display: flex;
+            justify-content: center;
+            .defaultPacks,
+            .approvedPacks {
+                width: 100%;
+                height: 100vh;
+                background-color: var(--main-bg-color);
+                border-top: 1px solid black;
+                padding-top: 3em;
+            }
+            .defaultPacks {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                p {
+                    background-color: black;
+                    padding: 1em;
+                    width: 75%;
+                }
+            }
+        }
+    }
+    // ---------- Help section ---------- //
+    .helpBody {
+        width: 100vw;
+        padding-bottom: 2em;
+    }
+    .helpImg {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-height: 75vh;
+        overflow-y: scroll;
+        user-select: none;
+        &::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            background-color: #303030;
+        }
+        &::-webkit-scrollbar {
+            width: 12px;
+            background-color: #303030;
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: #555;
+        }
+        div {
+            width: 90%;
+            border-radius: 10px;
+            border: 2px solid white;
+            margin-top: 2em;
+            transition: 0.7s;
+            &:hover {
+                transform: scale(1.1);
+            }
+            p {
+                padding: 1em;
+                margin-bottom: 0;
+                font-size: 1.3em;
+            }
+            img {
+                border-top: 2px solid white;
+                width: 100%;
+                border-radius: 10px;
             }
         }
     }

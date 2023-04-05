@@ -4,13 +4,15 @@
     <header class="d-flex justify-content-between w-100 p-2 mb-4">
         <div class="d-flex justify-content-center w-100">
             <!-- Packs -->
-            <a class="select link"><i class="bi bi-box2-heart"></i><br>Packs</a>
+            <a class="select link" (click)="togglePacks()"><i class="bi bi-box2-heart"></i><br>Packs</a>
             <!-- Modifica -->
-            <a class="select link" (click)="onModifyClick()"><i class="bi bi-pencil-square"></i><br>Edit</a>
+            <a class="select link" (click)="onModifyClick()" [class.edit]="modifyFlag === true">
+                <i class="bi bi-pencil-square"></i><br>Edit
+            </a>
             <!-- Settings -->
             <a class="select link" (click)="toggleSettings()"><i class="bi bi-gear"></i><br>Settings</a>
             <!-- help -->
-            <a class="select link"><i class="bi bi-question-circle"></i><br>Help</a>
+            <a class="select link" (click)="toggleHelp()"><i class="bi bi-question-circle"></i><br>Help</a>
         </div>
     </header>
     <!---------------- InputBar ---------------->
@@ -52,6 +54,38 @@
     </section>
 </main>
 
+<!------------------ Packs Menu ------------------>
+<div *ngIf="packsFlag" class="packs">
+    <!-- Chiusura -->
+    <div class="position-absolute top-0 end-0 m-4" style="cursor: pointer;" (click)="togglePacks()">
+        <i class="bi bi-x fs-2"></i>
+    </div>
+    <!-- PacksBody -->
+    <div class="packsBody w-100 h-100">
+        <!-- Sezioni -->
+        <div class="packSection">
+            <a class="packsChoice link" [class.active]="currentOption === 'default'"
+                (click)="toggleActive('default')"><i class="bi bi-box me-2"></i> Default Packs</a>
+            <a class="packsChoice link" [class.active]="currentOption === 'approved'"
+                (click)="toggleActive('approved')"><i class="bi bi-tools me-2"></i> Approved Packs</a>
+        </div>
+        <!-- Lista pachetti -->
+        <div class="packsList">
+            <!-- Default pack -->
+            <div *ngIf="currentOption === 'default'" class="defaultPacks">
+                    <p>pack #1</p>
+                    <p>pack #2</p>
+                    <p>pack #3</p>
+                    <p>pack #4</p>
+            </div>
+            <!-- Approved packs -->
+            <div *ngIf="currentOption === 'approved'" class="approvedPacks">
+                <p class="display-1 text-center">Coming Soon!</p> <!--AfterCapstone (?)-->
+            </div>
+        </div>
+    </div>
+</div>
+
 <!------------------ Pop up settings ------------------>
 <div *ngIf="settingsFlag" class="settings flex-center">
     <div class="settingsBody flex-center flex-column position-relative">
@@ -70,8 +104,6 @@
             <hr>
             <!--DeleteAll-->
             <button type="button" class="settingsBtn text-danger" (click)="deleteAll()">Delete Everything</button>
-
-            <!--da continuare con altri btn-->
         </div>
 
         <!------------------ Confirm Menu ------------------>
@@ -82,7 +114,7 @@
                 <p class="fs-5 mt-4">Confirm import of <span class="text-info">{{ qty }}</span> emojis?</p>
                 <div class="d-flex justify-content-evenly">
                     <button type="button" class="confirmBtn" (click)="confirmNo()">No</button>
-                    <button type="button" class="confirmBtn" (click)="confirmYes('import')">Yes</button>
+                    <button type="button" class="confirmBtn importYes" (click)="confirmYes('import')">Yes</button>
                 </div>
             </div>
             <!--delete-confirm-->
@@ -93,10 +125,46 @@
                     confirmed.)</p>
                 <div class="d-flex justify-content-evenly">
                     <button type="button" class="confirmBtn" (click)="confirmNo()">No</button>
-                    <button type="button" class="confirmBtn" (click)="confirmYes('deleteAll')">Yes</button>
+                    <button type="button" class="confirmBtn deleteYes" (click)="confirmYes('deleteAll')">Yes</button>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
+<!------------------ Help Menu ------------------>
+<div *ngIf="helpFlag" class="help flex-center">
+    <div class="helpBody flex-center flex-column position-relative px-4">
+        <!-- Chiusura -->
+        <div *ngIf="helpFlag" class="position-absolute top-0 end-0 m-4" (click)="toggleHelp()">
+            <i class="bi bi-x fs-2"></i>
+        </div>
+        <div class="helpImg w-100 px-1 text-center">
+            <h2><i class="bi bi-info-circle"></i>How to Use:</h2>
+            <div>
+                <p><i class="bi bi-1-circle"></i> &nbsp;-&nbsp; Find the desired emoji</p>
+                <img src="assets/tutorial/tutorial-1.png" alt="tutorial-1">
+            </div>
+            <div>
+                <p><i class="bi bi-2-circle"></i> &nbsp;-&nbsp; Copy the link 📋</p>
+                <img src="assets/tutorial/tutorial-2.png" alt="tutorial-2">
+            </div>
+            <div>
+                <p><i class="bi bi-3-circle"></i> &nbsp;-&nbsp; Paste the URL</p>
+                <img src="assets/tutorial/tutorial-3.png" alt="tutorial-3">
+            </div>
+            <div>
+                <p><i class="bi bi-4-circle"></i> &nbsp;-&nbsp; Select the emoji you want to use</p>
+                <img src="assets/tutorial/tutorial-4.png" alt="tutorial-4">
+            </div>
+            <div>
+                <p><i class="bi bi-5-circle"></i> &nbsp;-&nbsp; Paste the emoji in Discord 👀</p>
+                <img src="assets/tutorial/tutorial-5.png" alt="tutorial-5">
+            </div>
+            <div>
+                <p><i class="bi bi-6-circle"></i> &nbsp;-&nbsp; Enjoy! 🎉</p>
+                <img src="assets/tutorial/tutorial-6.png" alt="tutorial-6">
+            </div>
         </div>
     </div>
 </div>

@@ -44,7 +44,8 @@ export class HomepageComponent implements OnInit {
     addEmoji() {
         let emojiUrl = this.addInput.trim(); // per eventuali spazi extra
         this.addInput = '';
-        // check length dell url
+        // check length dell url <=1 e >=150
+        if (emojiUrl.length <= 1) return;
         if (emojiUrl.length >= 150) {
             this.erroreInput = "The URL is too long! Please try another one.";
             setTimeout(() => {
@@ -89,7 +90,9 @@ export class HomepageComponent implements OnInit {
     settingsConfirm: boolean = false; //import menu
     modifyFlag: boolean = false; //modifica
 
-    onModifyClick = () => this.modifyFlag = !this.modifyFlag;
+    onModifyClick = () => {
+        this.modifyFlag = !this.modifyFlag;
+    }
     toggleSettings = () => this.settingsFlag = !this.settingsFlag;
     confirmMenu = () => this.settingsConfirm = !this.settingsConfirm;
 
@@ -199,4 +202,15 @@ export class HomepageComponent implements OnInit {
         }
     }
     confirmNo = () => this.confirmed();
+
+    //------------ // ---------------[ Pack Menu ]--------------- //------------ //
+    popUpFlag: boolean = false;
+    packsFlag: boolean = false;
+    currentOption: string = 'default'; //pack choice
+    toggleActive = (option: string) => this.currentOption = option;
+    togglePacks = () => this.packsFlag = !this.packsFlag;
+
+    //------------ // ---------------[ Help Menu ]--------------- //------------ //
+    helpFlag: boolean = false;
+    toggleHelp = () => this.helpFlag = !this.helpFlag;
 }

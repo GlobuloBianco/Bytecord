@@ -1,42 +1,39 @@
 <header>
-    <a routerLink="/" class="border-0"><img src="../../../assets/logo/android-chrome-192x192.png" alt="logo"
+    <a routerLink="/" class="border-0 starter"><img src="../../../assets/logo/android-chrome-192x192.png" alt="logo"
             width="70px"></a>
-
     <!--Menu icon mobile-->
-    <a class="menuIcon" role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-        aria-controls="offcanvasRight"><i class="bi bi-boxes"></i> Menu</a>
+    <a class="menuIcon flex-center" role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight"><i class="bi bi-boxes"></i>&nbsp; Menu</a>
     <!--Menu-->
-    <div class="offcanvas offcanvas-end w-75 pt-4 px-4" tabindex="-1" id="offcanvasRight">
+    <section class="offcanvas offcanvas-end w-75 pt-4 px-4" tabindex="-1" id="offcanvasRight">
         <!--head-->
         <div class="d-flex justify-content-between pt-4 px-4">
-            <p class="fw-bold fs-3 menu"><i class="bi bi-cup-hot-fill"></i> Bytecord</p>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <p class="fw-bold fs-3 menu opacity-75"><i class="bi bi-cup-hot-fill"></i> Bytecord</p>
+            <!--Chiusura-->
+            <a type="button" data-bs-dismiss="offcanvas" aria-label="Close"><i class="bi bi-x-lg text-light fs-3"></i></a>
         </div>
-        <hr>
+        <hr class="mx-2">
         <!--body-->
-        <p class="fs-3 mb-4 p-0 text-center">『<i class="bi bi-person"></i> {{ username }} 』</p>
+        <p class="fs-3 mb-2 p-0 pt-2 text-center">『&nbsp;<i class="bi bi-person"></i> {{ username.toUpperCase() }} &nbsp;』</p>
         <!--logout-->
         <div class="flex-center w-100">
-            <a (click)="logout()" class="fs-5 menuOption link"><i class="bi bi-box-arrow-right"></i> Logout</a>
+            <a (click)="logout()" class="fs-5 menuOption link text-center"><i class="bi bi-box-arrow-right"></i>
+                Logout</a>
         </div>
-        <hr class="mx-5">
+        <hr class="mx-2 p-0 my-2">
+        <p class="fs-3 mb-2 pb-2 pt-3 text-center">『&nbsp; <i class="bi bi-compass"></i> Navigation &nbsp;』</p>
         <!--starter-->
         <div class="d-flex align-items-center w-100 flex-column">
             <a href="/" class="fs-5 menuOption link"><i class="bi bi-star"></i> Start</a>
         </div>
         <!--Emoji-->
         <div class="d-flex align-items-center w-100 flex-column">
-            <a routerLink="/homepage" class="fs-5 menuOption link"><i class="bi bi-emoji-smile"></i> Emoji</a>
+            <a href="/homepage" class="fs-5 menuOption link"><i class="bi bi-emoji-smile"></i> Emoji</a>
         </div>
         <!--dashboard-->
         <div class="d-flex align-items-center w-100 flex-column">
-            <a *ngIf="authorized" routerLink="/dashboard" class="fs-5 menuOption link"><i
-                    class="bi bi-clipboard-data"></i> Dashboard</a>
+            <a *ngIf="authorized" href="/dashboard" class="fs-5 menuOption link"><i class="bi bi-clipboard-data"></i>
+                Dashboard</a>
         </div>
-    </div>
+    </section>
 </header>
-<!--
-<div>
-    <a *ngIf="authorized" routerLink="/dashboard" class="link">Dashboard <i class="bi bi-clipboard-data"></i></a>
-    <a (click)="logout()" class="link">Logout <i class="bi bi-box-arrow-left"></i></a>
-</div>-->
