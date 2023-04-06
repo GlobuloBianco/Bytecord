@@ -1,0 +1,22 @@
+@media (min-width: 768px) {
+    header {
+        display: flex;
+        justify-content: center!important;
+        .toolbar {
+            border: 3px solid gray;
+            border-radius: 15px;
+            max-width: 768px;
+            background-color: #383A40;
+        }
+        .select {
+            padding: 0.8em 1.5em;
+        }
+    }
+    .helpBody {
+        width: 768px!important;
+        .helpImg {
+            width: 576px!important;
+        }
+    }
+
+}

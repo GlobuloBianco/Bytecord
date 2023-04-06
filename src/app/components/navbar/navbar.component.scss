@@ -1,8 +1,12 @@
+@import "media-queries";
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1em 2em;
+    box-shadow: 0px 1px 10px black;
+    height: 70px;
     .starter {
         transition: 0.7s;
         &:hover {
@@ -33,13 +37,42 @@ header {
             transform: scale(1.1);
         }
     }
+    // --- navbar desktop --- //
+    .navbar {
+        display: none;
+        .navbarIcon {
+            aspect-ratio: 5/1;
+            cursor:pointer;
+            text-decoration: none;
+            color: #ffffffb5;
+            transition: 0.3s;
+            &:hover {
+                transform: scale(1.1);
+                color: var(--main-color);
+            }
+        }
+        .logout {
+            width: 90px;
+            background-color: #383a40;
+            box-shadow: 0px 1px 10px #00000051;
+            padding: 0.7em 1em;
+            border-radius: 10px;
+            transition: 0.7s;
+            cursor:pointer;
+            &:hover {
+                background-color: #4d5057;
+                transform: scale(1.1);
+            }
+        }
+    }
+    // ----------------------- navbar mobile ----------------------- //
     //navbar aperto
     .offcanvas {
         background-color: #383a40;
         color: var(--main-color);
         border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;
-        max-width: 400px;
+        max-width: 300px;
         .menuOption {
             width: 100%;
             color: var(--main-color);
@@ -58,4 +91,10 @@ header {
             }
         }
     }
+}
+
+.active {
+    color: white!important;
+    transform: scale(1.1)!important;
+    font-weight: bold;
 }

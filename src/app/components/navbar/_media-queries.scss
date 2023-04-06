@@ -1,0 +1,10 @@
+@media (min-width: 768px) {
+    .navbar {
+        display: flex!important;
+        justify-content: center;
+        flex-grow: 1;
+    }
+    .menuIcon {
+        display: none;
+    }
+}

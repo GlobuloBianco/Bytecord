@@ -1,5 +1,8 @@
+@import 'media-queries';
+
 .body {
     overflow: auto;
+    overflow-x: hidden;
     height: auto;
     margin: 2em;
     .edit {
@@ -7,10 +10,19 @@
         background-color: #fbff0048;
     }
     // ---------- toolbar ---------- //
+    .toolbar {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        border: 3px solid gray;
+        border-radius: 15px;
+        max-width: 768px;
+        background-color: #383A40;
+    }
     .select {
         cursor: pointer;
         color: var(--main-color);
-        padding: 0.8em 1.5em;
+        padding: 0.8em 1em;
         border-radius: 10px;
         text-decoration: none;
         width: 100px;
@@ -58,6 +70,9 @@
         }
     }
     // ---------- Input section ---------- //
+    .inputbar {
+        max-width: 1000px;
+    }
     .addInput {
         width: 100%;
         background-color: #383a40;
@@ -102,8 +117,8 @@
         justify-content: center;
         flex-wrap: wrap;
         align-items: center;
-        margin-top: 1em;
         width: 100%;
+        max-width: 1000px;
         padding: 2em 1em;
         background-color: #383a40;
         border-radius: 5px;
@@ -150,7 +165,7 @@
     .helpBody {
         width: 50vw;
         min-width: 320px;
-        max-width: 400px;
+        margin: 0 2em;
         height: auto;
         padding: 6em 0;
         background-color: #222222da;

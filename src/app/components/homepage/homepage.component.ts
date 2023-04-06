@@ -39,7 +39,7 @@ export class HomepageComponent implements OnInit {
 
     //------------ // ---------------[ Aggiunta emoji ]--------------- //------------ //
     addInput = ''; // inputfield
-    erroreInput = '';
+    errorInput = '';
 
     addEmoji() {
         let emojiUrl = this.addInput.trim(); // per eventuali spazi extra
@@ -47,24 +47,24 @@ export class HomepageComponent implements OnInit {
         // check length dell url <=1 e >=150
         if (emojiUrl.length <= 1) return;
         if (emojiUrl.length >= 150) {
-            this.erroreInput = "The URL is too long! Please try another one.";
+            this.errorInput = "The URL is too long! Please try another one.";
             setTimeout(() => {
-                this.erroreInput = "";
+                this.errorInput = "";
             }, 3000);
             return;
         }
         // Remove invalid Discord URLs
         if (emojiUrl.startsWith("https://discord.com/assets/")) {
-            this.erroreInput = "this emoji is already available by default! Please try another one.";
+            this.errorInput = "this emoji is already available by default! Please try another one.";
             setTimeout(() => {
-                this.erroreInput = "";
+                this.errorInput = "";
             }, 3000);
             return;
         }
         if (!emojiUrl.startsWith("https://cdn.discordapp.com/emojis/")) {
-            this.erroreInput = "Invalid or corrupt Discord emoji :C Please try another one.";
+            this.errorInput = "Invalid or corrupt Discord emoji :C Please try another one.";
             setTimeout(() => {
-                this.erroreInput = "";
+                this.errorInput = "";
             }, 3000);
             return;
         }
@@ -89,7 +89,6 @@ export class HomepageComponent implements OnInit {
     settingsFlag: boolean = false; // modal settings
     settingsConfirm: boolean = false; //import menu
     modifyFlag: boolean = false; //modifica
-
     onModifyClick = () => {
         this.modifyFlag = !this.modifyFlag;
     }
@@ -209,6 +208,9 @@ export class HomepageComponent implements OnInit {
     currentOption: string = 'default'; //pack choice
     toggleActive = (option: string) => this.currentOption = option;
     togglePacks = () => this.packsFlag = !this.packsFlag;
+
+    //default packs
+
 
     //------------ // ---------------[ Help Menu ]--------------- //------------ //
     helpFlag: boolean = false;

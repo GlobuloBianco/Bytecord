@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
     private readonly serverUrl: string = 'http://localhost:8080';
+    private readonly frontUrl: string = 'http://localhost:4200';
     private readonly tokenHeader = 'token';
     private readonly authState = new BehaviorSubject<boolean>(false);
 
@@ -55,6 +56,7 @@ export class AuthService {
 
     //-----Getters & Setters-----//
     getServerUrl = (): string => this.serverUrl;
+    getFrontUrl = (): string => this.frontUrl;
 
     getToken = (): string | null => sessionStorage.getItem(this.tokenHeader);
     setToken = (token: string): void => sessionStorage.setItem(this.tokenHeader, token);

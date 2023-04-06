@@ -2,7 +2,7 @@
 <main class="body mt-3 d-flex flex-column align-items-center">
     <!---------------- ToolBar ---------------->
     <header class="d-flex justify-content-between w-100 p-2 mb-4">
-        <div class="d-flex justify-content-center w-100">
+        <div class="toolbar">
             <!-- Packs -->
             <a class="select link" (click)="togglePacks()"><i class="bi bi-box2-heart"></i><br>Packs</a>
             <!-- Modifica -->
@@ -16,7 +16,7 @@
         </div>
     </header>
     <!---------------- InputBar ---------------->
-    <section class="mb-3 d-flex align-items-center w-100">
+    <section class="mb-2 d-flex align-items-center w-100 inputbar">
         <!-- Input -->
         <input type="text" [(ngModel)]="addInput" (keydown.enter)="addEmoji()" class="form-control addInput"
             placeholder="Paste your emoji url here!">
@@ -27,9 +27,12 @@
             </a>
         </div>
     </section>
-    <!-- Errori -->
-    <div>
-        <p class="text-danger fw-bold fs-6 mx-3 text-center">{{ erroreInput }}</p>
+    <!-- Errori & Messaggi -->
+    <div *ngIf="errorInput !=''">
+        <p class="text-danger fw-bold fs-6 mx-3 text-center border border-danger p-1 px-3 rounded-1">{{ errorInput }}</p>
+    </div>
+    <div *ngIf="modifyFlag" class="w-100 flex-center">
+        <p class="text-info fw-bold fs-6 mx-3 text-center border border-info p-1 px-3 rounded-1">You are currently in edit mode.</p>
     </div>
     <!---------------- EmojiList ---------------->
     <section class="result">
@@ -73,10 +76,7 @@
         <div class="packsList">
             <!-- Default pack -->
             <div *ngIf="currentOption === 'default'" class="defaultPacks">
-                    <p>pack #1</p>
-                    <p>pack #2</p>
-                    <p>pack #3</p>
-                    <p>pack #4</p>
+
             </div>
             <!-- Approved packs -->
             <div *ngIf="currentOption === 'approved'" class="approvedPacks">
@@ -140,7 +140,7 @@
             <i class="bi bi-x fs-2"></i>
         </div>
         <div class="helpImg w-100 px-1 text-center">
-            <h2><i class="bi bi-info-circle"></i>How to Use:</h2>
+            <h2><i class="bi bi-info-circle"></i> How to Use:</h2>
             <div>
                 <p><i class="bi bi-1-circle"></i> &nbsp;-&nbsp; Find the desired emoji</p>
                 <img src="assets/tutorial/tutorial-1.png" alt="tutorial-1">

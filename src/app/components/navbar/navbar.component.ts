@@ -10,10 +10,11 @@ import { UserService } from 'src/app/services/user.service';
 export class NavbarComponent implements OnInit {
     username = "Profile";
     authorized: boolean = false;
-
+    currentActive: string = "";
     constructor(private authService: AuthService, private userService: UserService) { }
 
     ngOnInit(): void {
+        this.getActive();
         this.checkAuthorization();
     }
 
@@ -31,4 +32,6 @@ export class NavbarComponent implements OnInit {
             this.username = result;
         })
     }
+
+    getActive = () => this.currentActive = (window.location.href).replace(this.authService.getFrontUrl() + "/", "");
 }
