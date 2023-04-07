@@ -25,6 +25,5 @@ export class StarterComponent implements OnInit {
                 this.Login = result;
             })
         }
-
     }
 }

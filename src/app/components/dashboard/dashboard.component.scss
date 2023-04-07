@@ -1,1 +1,17 @@
-
+.option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1;
+    min-width: 150px;
+    width: 40%;
+    max-width: 300px;
+    background-color: gray;
+    transition: .7s;
+    cursor: pointer;
+    margin: 1em;
+    &:hover {
+        background-color: #656565;
+        transform: scale(1.1);
+    }
+}

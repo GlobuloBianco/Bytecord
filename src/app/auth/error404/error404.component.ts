@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class Error404Component implements OnInit {
     errorExpired: boolean = false;
+    errorUnauthorized: boolean = false;
     message = "";
 
     constructor(private authService: AuthService, private route: ActivatedRoute) { }
@@ -21,6 +22,8 @@ export class Error404Component implements OnInit {
         const reason = this.route.snapshot.paramMap.get('reason');
         if (reason === "expired") {
             this.errorExpired = true;
+        } else if (reason === "unauthorized") {
+            this.errorUnauthorized = true;
         } else {
             this.randomPick();
         }

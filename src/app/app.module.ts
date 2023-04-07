@@ -14,6 +14,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { Error404Component } from './auth/error404/error404.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PacksComponent } from './components/dashboard/d-packs/packs.component';
+import { PackWorkshopComponent } from './components/pack-workshop/pack-workshop.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
         LoginComponent,
         SignupComponent,
         Error404Component,
-        DashboardComponent
+        DashboardComponent,
+        PacksComponent,
+        PackWorkshopComponent
     ],
     imports: [
         BrowserModule,

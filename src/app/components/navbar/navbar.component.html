@@ -12,6 +12,9 @@
             <!--Emoji-->
             <a class="navbarIcon flex-center link mx-3 fs-6" [class.active]="currentActive === 'homepage'"
                 routerLink="/homepage">Emoji</a>
+            <!--Workshop-->
+            <a class="navbarIcon flex-center link mx-3 fs-6" [class.active]="currentActive === 'packs'"
+                routerLink="/packs">Workshop</a>
             <!--Dashboard-->
             <a class="navbarIcon flex-center link mx-3 fs-6" [class.active]="currentActive === 'dashboard'"
                 routerLink="/dashboard" *ngIf="authorized">
@@ -51,6 +54,12 @@
             <div class="d-flex align-items-center w-100 flex-column">
                 <a href="/homepage" class="fs-5 menuOption link">
                     <i class="bi bi-emoji-smile"></i> Emoji
+                </a>
+            </div>
+            <!--Workshop-->
+            <div class="d-flex align-items-center w-100 flex-column">
+                <a href="/packs" class="fs-5 menuOption link">
+                    <i class="bi bi-tools me-2"></i> Workshop
                 </a>
             </div>
             <!--dashboard-->

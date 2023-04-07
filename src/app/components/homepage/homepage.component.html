@@ -4,7 +4,7 @@
     <header class="d-flex justify-content-between w-100 p-2 mb-4">
         <div class="toolbar">
             <!-- Packs -->
-            <a class="select link" (click)="togglePacks()"><i class="bi bi-box2-heart"></i><br>Packs</a>
+            <a class="select link" routerLink="/packs"><i class="bi bi-box2-heart"></i><br>Packs</a>
             <!-- Modifica -->
             <a class="select link" (click)="onModifyClick()" [class.edit]="modifyFlag === true">
                 <i class="bi bi-pencil-square"></i><br>Edit
@@ -56,35 +56,6 @@
         </div>
     </section>
 </main>
-
-<!------------------ Packs Menu ------------------>
-<div *ngIf="packsFlag" class="packs">
-    <!-- Chiusura -->
-    <div class="position-absolute top-0 end-0 m-4" style="cursor: pointer;" (click)="togglePacks()">
-        <i class="bi bi-x fs-2"></i>
-    </div>
-    <!-- PacksBody -->
-    <div class="packsBody w-100 h-100">
-        <!-- Sezioni -->
-        <div class="packSection">
-            <a class="packsChoice link" [class.active]="currentOption === 'default'"
-                (click)="toggleActive('default')"><i class="bi bi-box me-2"></i> Default Packs</a>
-            <a class="packsChoice link" [class.active]="currentOption === 'approved'"
-                (click)="toggleActive('approved')"><i class="bi bi-tools me-2"></i> Approved Packs</a>
-        </div>
-        <!-- Lista pachetti -->
-        <div class="packsList">
-            <!-- Default pack -->
-            <div *ngIf="currentOption === 'default'" class="defaultPacks">
-
-            </div>
-            <!-- Approved packs -->
-            <div *ngIf="currentOption === 'approved'" class="approvedPacks">
-                <p class="display-1 text-center">Coming Soon!</p> <!--AfterCapstone (?)-->
-            </div>
-        </div>
-    </div>
-</div>
 
 <!------------------ Pop up settings ------------------>
 <div *ngIf="settingsFlag" class="settings flex-center">

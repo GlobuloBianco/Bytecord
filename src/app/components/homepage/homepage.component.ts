@@ -30,7 +30,7 @@ export class HomepageComponent implements OnInit {
                     (response) => {
                         // check presenza
                         response.length == 0 || response == "" ? this.isEmpty = true : (this.emojiList = response.trim(), this.update());
-                        this.displayList = this.emojiService.emojiToArray(this.emojiList);
+                        this.displayList = this.emojiService.dataToArray(this.emojiList);
                     }
                 )
             })
@@ -96,7 +96,7 @@ export class HomepageComponent implements OnInit {
     confirmMenu = () => this.settingsConfirm = !this.settingsConfirm;
 
     delete(emoji: string) {
-        let lista = this.emojiService.emojiToArray(this.emojiList);
+        let lista = this.emojiService.dataToArray(this.emojiList);
         //trova l'elemento e lo cancella
         const index = lista.indexOf(emoji);
         if (index !== -1) lista.splice(index, 1);
@@ -137,7 +137,7 @@ export class HomepageComponent implements OnInit {
             //--------aftercheck--------//
             this.confirmMenu();
             this.importConfirm = true;
-            this.importedList = this.emojiService.emojiToArray(result);
+            this.importedList = this.emojiService.dataToArray(result);
             this.qty = 0;
             this.importedList.forEach(e => this.qty++) //calcolo di qty emoji
         };
@@ -201,16 +201,6 @@ export class HomepageComponent implements OnInit {
         }
     }
     confirmNo = () => this.confirmed();
-
-    //------------ // ---------------[ Pack Menu ]--------------- //------------ //
-    popUpFlag: boolean = false;
-    packsFlag: boolean = false;
-    currentOption: string = 'default'; //pack choice
-    toggleActive = (option: string) => this.currentOption = option;
-    togglePacks = () => this.packsFlag = !this.packsFlag;
-
-    //default packs
-
 
     //------------ // ---------------[ Help Menu ]--------------- //------------ //
     helpFlag: boolean = false;

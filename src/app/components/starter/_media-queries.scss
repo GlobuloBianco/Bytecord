@@ -1,0 +1,22 @@
+@media (min-width: 768px) {
+    main {
+        h2 {
+            font-size: 4em !important;
+        }
+        p {
+            font-size: 1.8em !important;
+        }
+    }
+    #content {
+        display: flex;
+        align-items:center;
+        .outer-cell{
+            width: 50%;
+            height: 50%;
+            margin: 2em;
+            .cell {
+                margin: 2em;
+            }
+        }
+    }
+}

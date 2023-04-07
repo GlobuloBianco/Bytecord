@@ -6,10 +6,26 @@
     --main-color: white;
     --main-bg-color: #2E3035; //#060522;
     --main-font: Roboto, "Helvetica Neue", sans-serif;
-
     --secondary-color: #80848E//#0505a1b3;
     --secondary-bg-color: white;
     --secondary-font:'Rampart One', cursive;
+}
+
+* {
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        background-color: #303030;
+    }
+    &::-webkit-scrollbar {
+        width: 12px;
+        background-color: #303030;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #555;
+    }
 }
 
 html, body { height: 100%; }

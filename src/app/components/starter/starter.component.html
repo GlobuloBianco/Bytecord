@@ -1,29 +1,70 @@
-<main class="starter flex-center flex-column ">
-    <!-- Visibile iniziale -->
-    <div class="hero">
-        <div class="hero-content flex-center flex-wrap flex-column">
-            <div class="content flex-center">
-                <h1 class="title">Bytecord</h1>
-                <p class="subtitle">Simplified Discord Emoji Management</p>
-            </div>
-            <div class="content">
-                <!--<img src="https://picsum.photos/200" alt="" class="img-fluid">-->
-            </div>
+<main>
+    <header>
+        <div class="d-flex align-items-center">
+            <a routerLink="/" class=""><img src="assets/logo/android-chrome-192x192.png" alt="logo"
+                    width="40px"></a>
+            <h1 class="m-0 ms-2">Bytecord</h1>
         </div>
-    </div>
-    <!-- btn row -->
-    <div class="navigation d-flex justify-content-between w-100 align-items-start">
-        <a href="#" class="link"><i class="bi bi-bullseye me-2"></i>Lorem</a>
-        <a routerLink="/homepage" class="link"><i class="bi bi-box-arrow-in-left me-2"></i>{{ Login }}</a>
+        <a routerLink="/homepage" class="link login px-4"><i *ngIf="Login != 'Login In'"
+                class="bi bi-person-fill"></i><i *ngIf="Login == 'Login In'"
+                class="bi bi-box-arrow-in-left"></i>&nbsp;{{ Login
+            }}</a>
+    </header>
+    <!-- hero -->
+    <div class="hero">
+        <h2>Manage your discord emojis</h2>
+        <p>Bytecord is a web app designed to easily discover, save and share your favorite Discord emojis with others.
+        </p>
+        <a class="mt-4 button flex-center" routerLink="/signup"><i class="bi bi-dice-2 fs-4"></i> &nbsp;&nbsp;Get
+            started for free</a>
     </div>
     <!-- scrolldown icona -->
     <div class="scrolldown flex-center" (click)="showMore()"><i class="bi bi-caret-down text-light"></i></div>
+    <img class="heroImg" src="assets/emojiSection.png" alt="emojis">
+    <!-- spacer-1 -->
+    <img class="spacer" src="assets/bg/space-1.svg" alt="" width="100%">
 </main>
-
-<!-- Info extra -->
-<section id="content" class="mt-5">
-    <div class="container d-flex justify-content-center align-items-center flex-column text-center p-0">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam dolorum quia, consequuntur sunt reiciendis quibusdam incidunt nihil deleniti sed explicabo repellat assumenda, hic voluptatem molestiae illum natus, et magni eos!
+<section class="py-5" id="content">
+    <!-- features -->
+    <div class="outer-cell">
+        <div class="cell">
+            <div class="icon"> <i class="bi bi-lightbulb"></i></div>
+            <h3 class="">Simple and Intuitive</h3>
+            <p>Bytecord's user-friendly interface makes managing your Discord emojis effortless.</p>
+        </div>
+        <div class="cell">
+            <div class="icon"><i class="bi bi-box-seam"></i></div>
+            <h3 class="">Organize Your Emojis</h3>
+            <p>With Bytecord, you can always have your favorite emojis saved on your personal profile. You can easily
+                access, modify, and organize them as needed.</p>
+        </div>
+    </div>
+    <div class="outer-cell">
+        <div class="cell">
+            <div class="icon"><i class="bi bi-arrows-angle-expand"></i></div>
+            <h3 class="">Expand Your Collection</h3>
+            <p>Take your emojis with you wherever you go! Bytecord lets you easily import and export your emojis, so you can
+                share them with friends.</p>
+        </div>
+        <div class="cell">
+            <div class="icon"><i class="bi bi-box2-heart"></i></div>
+            <h3 class="">Discover and Create Packs</h3>
+            <p>Explore a wide variety of pre-made emoji packs, or create your own! With the dedicated workshop, you can
+                share your emoji packs or browse and use packs created by other Bytecord users.</p>
+        </div>
     </div>
 
 </section>
+<!-- spacer-2 -->
+<img class="spacer" src="assets/bg/space-2.svg" alt="" width="100%">
+<!-- footer -->
+<footer>
+    <a class="button flex-center mt-3 mx-auto" routerLink="/signup">Get started for free</a>
+    <hr class="text-white w-50 mx-auto mt-5 mb-3">
+    <div class="flex-center flex-column">
+        <a routerLink="/"><img  class="mx-auto"src="../../../assets/logo/android-chrome-192x192.png" alt="logo"
+            width="80px"></a>
+        <h1 class="m-4 fs-6 text-light">&copy; 2023 Bytecord. All rights reserved.</h1>
+    </div>
+
+</footer>

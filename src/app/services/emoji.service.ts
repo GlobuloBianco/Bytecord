@@ -13,7 +13,7 @@ export class EmojiService {
 
     constructor(private authService: AuthService, private http: HttpClient, private userService: UserService) { }
 
-    //----- CRUD -----//
+    //----- richieste http -----//
     getEmojiList(userId: number): Observable<string> {
         const url = `${this.serverUrl + "/api/user"}/${userId}/emoji`;
         return this.http.get(url, { responseType: 'text' });
@@ -30,7 +30,7 @@ export class EmojiService {
     }
 
       //----- Varie -----//
-    emojiToArray = (e: string) => e.split(", ");
+    dataToArray = (e: string) => e.split(", ");
     commaFix = (e: string) => e.replace(/,/g, ", "); //impostare da virgola a virgola spazio
 
     toDatabaseFormat = (e: any) => {

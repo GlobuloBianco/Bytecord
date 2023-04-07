@@ -1,0 +1,20 @@
+<app-navbar></app-navbar>
+<main class="flex-center pt-5 w-100 flex-column">
+    <h2 class="text-light">Available Packs:</h2>
+    <section class="flex-center flex-wrap" *ngIf="packs">
+        <!--response-->
+        <div *ngFor="let pack of packs" class="pack m-2">
+            <div>
+                <div class="flex-center rounded-circle">
+                    <img src="{{pack.lista}}" alt="pack">
+                </div>
+                <div class="flex-grow-1 text-center">
+                    <p class="text-light m-0">{{pack.nome}}</p>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+</main>
