@@ -7,6 +7,8 @@ header {
     padding: 2em 1em;
     box-shadow: 0px 1px 10px black;
     height: 70px;
+    background: url(../../../assets/bg/bg-circle-2.svg);
+    background-size: 130%;
     .starter {
         transition: 0.7s;
         &:hover {

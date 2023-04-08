@@ -1,77 +1,112 @@
 // ------------ Auth ------------ //
 .auth-body {
     background: var(--main-bg-color);
-    background: linear-gradient(180deg, #0c0a44 0%, #0b093c 20%, #060522 50%);
+    background: url(assets/bg/bg-blob.svg);
+    background-size: cover;
+    background-position: left;
     height: 100vh;
     font-family: var(--main-font);
-    color: gray;
     user-select: none;
     overflow: hidden;
-
+}
+.logo {
+    background: gray;
+    background-image: url("assets/bg/bg-poly.svg");
+    border-radius: 5px 5px 0 0;
     img {
         -webkit-user-drag: none;
         user-select: none;
-        transition: .7s;
-        &:hover, &:active {
+        transition: 0.7s;
+        border: 4px solid white;
+        border-radius: 100%;
+        &:hover,
+        &:active {
             cursor: pointer;
-            transform:scale(1.1)
+            transform: scale(1.1);
+            box-shadow: 0px 0px 10px white;
         }
     }
+}
+.main {
+    max-width: 500px;
+    height: 690px;
+    box-shadow: 1px 1px 50px black;
+    label {
+        width: 100%;
+    }
+    form {
+        height: 100%;
+    }
+}
+.formBody {
+    width: 100%;
+}
 
-    main {
+.auth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    border-radius: 0 0 5px 5px;
+    .auth-icon,
+    .auth-input {
+        border: none;
+        background-color: var(--secondary-bg-color);
+        min-height: 40px;
+    }
+    .auth-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         aspect-ratio: 1;
-        padding: 2em;
+        font-size: 1.5em;
+        color: black;
     }
-
-    a {
-        color: var(--main-color)
+    .auth-input {
+        width: 100%;
+        padding: 0.8em;
+        padding-left: 15px;
+        border-radius: 5px;
+        border: 3px solid gray;
+        transition: 0.4s;
+        &:focus {
+            outline: none;
+            border: 3px solid #5865f2;
+        }
     }
-
-    .toggle:hover {
-        cursor: pointer;
+    .auth-submit {
+        background-color: #5865f2;
+        box-shadow: 1px 1px 5px black;
+        font-weight: bold;
+        border-radius: 5px;
+        margin: 1em 0;
+        width: 100%;
+        padding: 0.8em;
+        border: 3px solid var(--main-color);
+        color: var(--main-color);
+        transition: 0.7s;
+        &:disabled {
+            background-color: #ffffffa7;
+            color: #5865f2;
+            border: 3px dashed #5865f2;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
     }
+}
 
-    .auth {
-        .auth-icon,
-        .auth-input {
-            border: none;
-            background-color: var(--secondary-bg-color);
-            min-height: 40px;
-        }
-        .auth-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            aspect-ratio: 1;
-            transform: translateX(2px);
-            padding-left: 1em;
-            border-radius: 20px 0 0 20px;
-            font-size: 1.2em;
-        }
-        .auth-input {
-            min-width: 250px;
-            padding: 0.5em;
-            padding-left: 15px;
-            border-radius: 0 20px 20px 0;
-            &:focus {
-                outline: none;
-            }
-        }
-        .auth-submit {
-            background-color: var(--main-bg-color);
-            border-radius: 20px;
-            margin: 2em 0;
-            width: 150px;
-            padding: 0.5em;
-            border: 3px solid var(--main-color);
-            color: var(--main-color);
-            transition: .7s;
-            &:disabled {
-                background-color: #999999;
-                color: gray;
-                border: 3px dashed var(--main-color);
-                cursor: not-allowed;
-            }
-        }
+.checkBtn {
+    color: var(--main-color);
+    aspect-ratio: 1;
+    margin-left: 0.5em;
+    border-radius: 5px;
+    min-width: 45px;
+    border: 3px solid gray;
+    background-color: white;
+    cursor: pointer;
+    i {
+        border-radius: 5px;
     }
 }

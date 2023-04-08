@@ -1,15 +1,33 @@
+@media (max-width: 767px) {
+    .logo {
+        background: url('../../../assets/bg/bg-wave.svg')!important;
+    }
+    .main {
+        height: auto;
+    }
+    .form {
+        padding-bottom: 1em;
+    }
+}
+
 @media (min-width: 768px) {
+    .logo {
+        background: url('../../../assets/bg/bg-wave.svg')!important;
+    }
     .main {
         display: flex;
         flex-direction: row!important;
         max-width: 700px;
-        max-height: 500px;
+        height: auto;
         border-radius: 5px;
     }
     .title {
         text-align: center;
         width: 100%;
         margin-left: 0!important;
+    }
+    .form {
+        padding-bottom: 2em;
     }
     .logo {
         width: 40%!important;
@@ -29,13 +47,12 @@
 
 @media (min-width: 992px) {
     .main {
-        max-width: 800px;
+        max-width: 850px;
         .logo {
             width: 50%!important;
         }
         .auth {
             width: 50%!important;
-
         }
     }
 

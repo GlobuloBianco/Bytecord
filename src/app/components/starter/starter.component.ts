@@ -17,6 +17,7 @@ export class StarterComponent implements OnInit {
     }
 
     showMore = () => window.location.href = '#content';
+    scrollTo = (e: HTMLElement) => e.scrollIntoView();
     isLogged() {
         let compare: boolean = false;
         this.authService.isLogged().subscribe(Response => compare = Response);

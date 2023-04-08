@@ -1,9 +1,8 @@
-<main>
+<main #main>
     <header>
         <div class="d-flex align-items-center">
-            <a routerLink="/" class=""><img src="assets/logo/android-chrome-192x192.png" alt="logo"
-                    width="40px"></a>
-            <h1 class="m-0 ms-2">Bytecord</h1>
+            <a routerLink="/" class=""><img src="assets/logo/android-chrome-192x192.png" alt="logo" width="40px"></a>
+            <h1 routerLink="/" class="m-0 ms-2">Bytecord</h1>
         </div>
         <a routerLink="/homepage" class="link login px-4"><i *ngIf="Login != 'Login In'"
                 class="bi bi-person-fill"></i><i *ngIf="Login == 'Login In'"
@@ -43,7 +42,8 @@
         <div class="cell">
             <div class="icon"><i class="bi bi-arrows-angle-expand"></i></div>
             <h3 class="">Expand Your Collection</h3>
-            <p>Take your emojis with you wherever you go! Bytecord lets you easily import and export your emojis, so you can
+            <p>Take your emojis with you wherever you go! Bytecord lets you easily import and export your emojis, so you
+                can
                 share them with friends.</p>
         </div>
         <div class="cell">
@@ -62,8 +62,7 @@
     <a class="button flex-center mt-3 mx-auto" routerLink="/signup">Get started for free</a>
     <hr class="text-white w-50 mx-auto mt-5 mb-3">
     <div class="flex-center flex-column">
-        <a routerLink="/"><img  class="mx-auto"src="../../../assets/logo/android-chrome-192x192.png" alt="logo"
-            width="80px"></a>
+        <a style="cursor: pointer;"><img class="mx-auto" src="../../../assets/logo/android-chrome-192x192.png" alt="logo" width="80px" (click)="scrollTo(main)"></a>
         <h1 class="m-4 fs-6 text-light">&copy; 2023 Bytecord. All rights reserved.</h1>
     </div>
 
