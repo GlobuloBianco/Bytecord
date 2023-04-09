@@ -1,25 +1,65 @@
+.body {
+    height: auto;
+    min-height: calc(100vh - 70px);
+}
+.packs {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 0.5em;
+    text-align: center;
+    background-color: #00000066;
+    border-radius: 10px;
+    max-width: 700px;
+    .result {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
 .cell {
     position: relative;
     text-align: center;
-    background-color: lightblue;
-    width: 100px;
+    width: 120px;
     margin: 1em;
+    cursor: pointer;
+    border: 7px solid white;
+    background-color: black;
     box-shadow: 1px 1px 5px black;
     transition: 0.7s;
-    cursor: pointer;
+    -webkit-user-drag: none;
+    user-select: none;
     img {
         width: 100%;
         aspect-ratio: 1;
     }
     .bottom {
         position: absolute;
-        background-color: #00000096;
-        bottom: 0;
-        margin: 0;
+        top: 0;
         width: 100%;
-        padding: 0.5em 0;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        font-weight: 700;
+        font-size: 1.3em;
+        color: white;
+        padding: 0.7em;
+        background-color: #00000050;
+        text-shadow: 1px 1px 5px black;
+        transition: 0.7s;
+        &:hover {
+            background-color: transparent;
+            transform: scale(1.3);
+        }
     }
     &:hover {
+        transform: scale(0.9);
+    }
+    &:active {
         transform: scale(1.1);
     }
 }
@@ -47,4 +87,51 @@
         background-color: gray;
         margin: 2em;
     }
+}
+
+.menuOption {
+    width: 100%;
+    color: var(--main-color);
+    opacity: 0.7;
+    background-color: #00000004;
+    border-radius: 5px;
+    text-align: center;
+    transition: 1s;
+    padding: 0.7em 1.3em;
+    margin: 0.2em;
+    &:hover,
+    &:active {
+        text-decoration: none;
+        color: black;
+        background-color: #dadada;
+    }
+}
+
+.option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1;
+    min-width: 300px;
+    width: 25%;
+    background-color: gray;
+    background: url("../../../assets/cards/card-1.svg");
+    background-size: contain;
+    border: 20px solid white;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5em;
+    transition: .7s;
+    text-align: center;
+    line-height: 150%;
+    cursor: pointer;
+    margin: 1em;
+    &:hover {
+        scale: (0.9);
+    }
+}
+
+.bg {
+    background-color: #2E3035;
+    background: url('../../../assets/bg/bg-step.svg');
 }

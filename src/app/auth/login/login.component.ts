@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
                     setTimeout(()=>{
                         this.erroreCredenziali = false;
                     }, 2500);
-                } else this.router.navigate(['/homepage']);
+                } else this.router.navigate(['/emoji']);
             })
     }
 

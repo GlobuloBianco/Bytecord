@@ -1,22 +1,19 @@
 <header>
-    <div class="d-flex align-content-center">
-        <a routerLink="/" class="border-0 starter"><img src="../../../assets/logo/android-chrome-192x192.png" alt="logo"
+    <div class="d-flex align-content-center head">
+        <a routerLink="/" class="border-0"><img src="../../../assets/logo/android-chrome-192x192.png" alt="logo"
                 width="40px"></a>
     </div>
     <!--------------------------------Menu Desktop-------------------------------->
     <div class="navbar ms-3">
         <div class="d-flex flex-grow-1">
-            <!--Homepage-->
-            <a class="navbarIcon flex-center link mx-3 fs-6" [class.active]="currentActive === 'default'"
-                routerLink="/">Home</a>
             <!--Emoji-->
-            <a class="navbarIcon flex-center link mx-3 fs-6" [class.active]="currentActive === 'homepage'"
-                routerLink="/homepage">Emoji</a>
+            <a class="navbarIcon flex-center link mx-3 fs-6" [class.active]="currentActive.startsWith('emoji')"
+                routerLink="/emoji">Emoji</a>
             <!--Workshop-->
-            <a class="navbarIcon flex-center link mx-3 fs-6" [class.active]="currentActive === 'packs'"
+            <a class="navbarIcon flex-center link mx-3 fs-6" [class.active]="currentActive.startsWith('packs')"
                 routerLink="/packs">Workshop</a>
             <!--Dashboard-->
-            <a class="navbarIcon flex-center link mx-3 fs-6" [class.active]="currentActive === 'dashboard'"
+            <a class="navbarIcon flex-center link mx-3 fs-6" [class.active]="currentActive.startsWith('dashboard')"
                 routerLink="/dashboard" *ngIf="authorized">
                 Dashboard</a>
         </div>
@@ -44,15 +41,9 @@
             <hr class="mx-2">
             <!--body-->
             <p class="fs-3 mb-2 pb-2 pt-3 text-center">『&nbsp; <i class="bi bi-compass"></i> Navigation &nbsp;』</p>
-            <!--starter-->
-            <div class="d-flex align-items-center w-100 flex-column">
-                <a href="/" class="fs-5 menuOption link">
-                    <i class="bi bi-star"></i> Home
-                </a>
-            </div>
             <!--Emoji-->
             <div class="d-flex align-items-center w-100 flex-column">
-                <a href="/homepage" class="fs-5 menuOption link">
+                <a href="/emoji" class="fs-5 menuOption link">
                     <i class="bi bi-emoji-smile"></i> Emoji
                 </a>
             </div>
@@ -83,3 +74,4 @@
         </div>
     </section>
 </header>
+

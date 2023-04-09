@@ -27,6 +27,7 @@ export class PackWorkshopComponent implements OnInit {
             this.packs = response;
             this.packs.forEach((pack: any) => { //primo emoji della lista
                 pack.firstEmoji = pack.lista.substring(0, pack.lista.indexOf(','));
+                pack.workshopImg = Math.floor(Math.random() * 3) + 1;
             });
         });
     }
@@ -48,9 +49,22 @@ export class PackWorkshopComponent implements OnInit {
                             this.popUp = false;
                         })
                     );
-
                 }
             )
         })
+    }
+
+    randomPic(pack: any) {
+        const card = 'assets/cards/card-';
+        let num = pack.workshopImg;
+        switch (num) {
+            case 1:
+                return card + '1.svg'
+            case 2:
+                return card + '2.svg';
+            case 3:
+                return card + '3.svg';
+        }
+        return 'assets/cards/card-pink.svg';
     }
 }

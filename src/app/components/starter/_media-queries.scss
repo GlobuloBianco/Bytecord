@@ -9,14 +9,27 @@
     }
     #content {
         display: flex;
-        align-items:center;
-        .outer-cell{
-            width: 50%;
-            height: 50%;
-            margin: 2em;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items:start;
+        justify-content: center;
+
             .cell {
+                width: 40%!important;
                 margin: 2em;
             }
+    }
+}
+
+@media (min-width: 1200px) {
+    #content {
+        display: flex;
+        flex-direction: row;
+        align-items:start;
+        width: 100vw;
+        .cell {
+            width: 20%!important;
+            margin: 2em;
         }
     }
 }

@@ -8,6 +8,7 @@
     .edit {
         //edit mode
         background-color: #fbff0048;
+        border-radius: 0px;
     }
     // ---------- toolbar ---------- //
     .toolbar {
@@ -32,6 +33,7 @@
             &:hover,
             &:active {
                 background-color: #ff000020;
+                border-radius: 10px 0 0 10px;
             }
             .bi {
                 color: red;
@@ -39,6 +41,7 @@
             }
         }
         &:nth-child(2) {
+            border-radius: 0;
             &:hover,
             &:active {
                 background-color: #fbff0048;
@@ -52,6 +55,7 @@
             &:hover,
             &:active {
                 background-color: #00ff3720;
+                border-radius: 0px;
             }
             .bi {
                 color: lightgreen;
@@ -62,6 +66,7 @@
             &:hover,
             &:active {
                 background-color: #0011ff48;
+                border-radius: 0 10px 10px 0;
             }
             .bi {
                 color: #427dfc;
@@ -109,6 +114,11 @@
                 opacity: 1;
             }
         }
+    }
+    .editMessage {
+        width: 100%;
+        max-width: 1000px;
+        color: #5865F2;
     }
 
     // ---------- list section ---------- //
@@ -257,4 +267,10 @@
             }
         }
     }
+}
+.mascotte { // solo al 1400 in su
+    display: none;
+    position: fixed;
+    top: 30%;
+    right: 0;
 }

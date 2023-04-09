@@ -4,11 +4,11 @@ import { EmojiService } from 'src/app/services/emoji.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-    selector: 'app-homepage',
-    templateUrl: './homepage.component.html',
-    styleUrls: ['./homepage.component.scss']
+    selector: 'app-emoji',
+    templateUrl: './emoji.component.html',
+    styleUrls: ['./emoji.component.scss']
 })
-export class HomepageComponent implements OnInit {
+export class EmojiComponent implements OnInit {
 
     serverUrl = this.authServ.getServerUrl(); // backend
     emojiList: string = ''; // lista ricevuta
@@ -197,7 +197,7 @@ export class HomepageComponent implements OnInit {
             case "deleteAll": this.deleted();
                 break;
             default:
-                console.error("unknown type in Confirm section homepage.ts");
+                console.error("unknown type in Confirm section emoji.ts");
         }
     }
     confirmNo = () => this.confirmed();

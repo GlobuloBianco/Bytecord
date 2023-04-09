@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomepageComponent } from './components/homepage/homepage.component';
+import { EmojiComponent } from './components/emoji/emoji.component';
 import { StarterComponent } from './components/starter/starter.component';
 import { Error404Component } from './auth/error404/error404.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -15,7 +15,7 @@ const routes: Routes = [
     // start section
     { path: '', component: StarterComponent },
     // -------- components section -------- //
-    { path: 'homepage', component: HomepageComponent, canActivate: [AuthGuard] },
+    { path: 'emoji', component: EmojiComponent, canActivate: [AuthGuard] },
     { path: 'packs', component: PackWorkshopComponent, canActivate: [AuthGuard] },
     // auth section
     { path: 'login', component: LoginComponent },

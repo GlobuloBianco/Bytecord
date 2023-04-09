@@ -9,7 +9,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { StarterComponent } from './components/starter/starter.component';
-import { HomepageComponent } from './components/homepage/homepage.component';
+import { EmojiComponent } from './components/emoji/emoji.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { Error404Component } from './auth/error404/error404.component';
@@ -23,7 +23,7 @@ import { PackWorkshopComponent } from './components/pack-workshop/pack-workshop.
         AppComponent,
         NavbarComponent,
         StarterComponent,
-        HomepageComponent,
+        EmojiComponent,
         LoginComponent,
         SignupComponent,
         Error404Component,

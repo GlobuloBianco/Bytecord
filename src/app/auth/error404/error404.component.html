@@ -1,6 +1,6 @@
 <div *ngIf="!errorExpired && !errorUnauthorized" class="flex-center h-100 text-center flex-column">
     <h2 class="text-light"> {{ message }}</h2>
-    <a class="btn btn-outline-light" routerLink="/homepage">Go back</a>
+    <a class="btn btn-outline-light" routerLink="/emoji">Go back</a>
 </div>
 
 <div *ngIf="errorExpired" class="flex-center h-100 text-center flex-column">
@@ -10,5 +10,5 @@
 
 <div *ngIf="errorUnauthorized" class="flex-center h-100 text-center flex-column">
     <h2 class="text-light">Oh.. Looks like someone is being mischievous here 👀! You're unauthorized to access here!</h2>
-    <a class="btn btn-outline-light" routerLink="/homepage">Go back</a>
+    <a class="btn btn-outline-light" routerLink="/emoji">Go back</a>
 </div>

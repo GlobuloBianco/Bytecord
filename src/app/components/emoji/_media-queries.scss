@@ -18,5 +18,11 @@
             width: 576px!important;
         }
     }
-
 }
+
+@media (min-width: 1400px) {
+    .mascotte {
+        display: block!important;
+    }
+}
+

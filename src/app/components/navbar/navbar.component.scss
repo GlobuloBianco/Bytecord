@@ -7,12 +7,15 @@ header {
     padding: 2em 1em;
     box-shadow: 0px 1px 10px black;
     height: 70px;
-    background: url(../../../assets/bg/bg-circle-2.svg);
-    background-size: 130%;
-    .starter {
+    background: url(../../../assets/bg/bg-header.svg);
+    background-size: cover;
+    .head {
+        border: 4px solid white;
+        border-radius: 100%;
         transition: 0.7s;
         &:hover {
             transform: scale(1.1);
+            box-shadow: 0 0 10px white;
         }
     }
     .menuIcon {
@@ -71,6 +74,8 @@ header {
     //navbar aperto
     .offcanvas {
         background-color: #383a40;
+        background: url('../../../assets/bg/bg-blob-vertical.svg');
+        background-size: cover;
         color: var(--main-color);
         border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;
