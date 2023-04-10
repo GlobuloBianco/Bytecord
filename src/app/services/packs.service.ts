@@ -15,4 +15,14 @@ export class PacksService {
             const url = `${this.serverUrl}/api/packs/`;
             return this.http.get(url, { responseType: 'json' });
         }
+
+        getAllByType(type: String): Observable<Object> {
+            const url = `${this.serverUrl}/api/packs/` + type;
+            return this.http.get(url, { responseType: 'json' });
+        }
+
+        requestPack(pack: { nome: String, lista: string }): Observable<Object> {
+            const url = `${this.serverUrl}/api/packs/add`;
+            return this.http.post(url, pack);
+        }
 }

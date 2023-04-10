@@ -1,0 +1,9 @@
+@media (min-width: 768px) {
+    .body {
+        display: flex;
+        flex-direction: row!important;
+    }
+    .section {
+        width: 50%!important;
+    }
+}

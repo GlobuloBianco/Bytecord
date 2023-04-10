@@ -1,14 +1,19 @@
 <div *ngIf="!errorExpired && !errorUnauthorized" class="flex-center h-100 text-center flex-column">
+    <h2 class="text-light m-5" style="font-size: 7em;">404</h2>
     <h2 class="text-light"> {{ message }}</h2>
-    <a class="btn btn-outline-light" routerLink="/emoji">Go back</a>
+    <a class="btn btn-outline-light mt-4" routerLink="/emoji">Go back</a>
 </div>
 
 <div *ngIf="errorExpired" class="flex-center h-100 text-center flex-column">
-    <h2 class="text-light">Looks like your session has run out of steam. Simply login again to recharge and continue your adventure with us!</h2>
-    <a class="btn btn-outline-light" (click)="logout()">Go back</a>
+    <h2 class="text-light m-5" style="font-size: 7em;">403</h2>
+    <h2 class="text-light">Looks like your session has run out of steam. Simply login again to recharge and continue
+        your adventure with us!</h2>
+    <a class="btn btn-outline-light  mt-4" (click)="logout()">Go back</a>
 </div>
 
 <div *ngIf="errorUnauthorized" class="flex-center h-100 text-center flex-column">
-    <h2 class="text-light">Oh.. Looks like someone is being mischievous here 👀! You're unauthorized to access here!</h2>
-    <a class="btn btn-outline-light" routerLink="/emoji">Go back</a>
+    <h2 class="text-light m-5" style="font-size: 7em;">401</h2>
+    <h2 class="text-light">Oh.. Looks like someone is being mischievous here 👀! You're unauthorized to access here!
+    </h2>
+    <a class="btn btn-outline-light mt-4" routerLink="/emoji">Go back</a>
 </div>

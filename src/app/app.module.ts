@@ -16,6 +16,8 @@ import { Error404Component } from './auth/error404/error404.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PacksComponent } from './components/dashboard/d-packs/packs.component';
 import { PackWorkshopComponent } from './components/pack-workshop/pack-workshop.component';
+import { WsPacksComponent } from './components/pack-workshop/ws-packs/ws-packs.component';
+import { WsCreateComponent } from './components/pack-workshop/ws-create/ws-create.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { PackWorkshopComponent } from './components/pack-workshop/pack-workshop.
         Error404Component,
         DashboardComponent,
         PacksComponent,
-        PackWorkshopComponent
+        PackWorkshopComponent,
+        WsPacksComponent,
+        WsCreateComponent
     ],
     imports: [
         BrowserModule,

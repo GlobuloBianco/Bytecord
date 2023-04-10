@@ -1,48 +1,15 @@
 <app-navbar></app-navbar>
 
 <main class="w-100 flex-center pt-5 body">
-    <div class="d-flex justify-content-evenly flex-wrap w-100 bg">
-        <div class="option animate__animated animate__zoomIn animate__faster">
+    <div class="d-flex justify-content-evenly flex-wrap w-100">
+        <div class="option animate__animated animate__zoomIn animate__faster" routerLink="/packs/default">
             <p class="w-100 m-0">Default Packs</p>
         </div>
-        <div class="option animate__animated animate__zoomIn animate__fast">
-            <p class="w-100 m-0">Approved Packs</p>
+        <div class="option animate__animated animate__zoomIn animate__fast" routerLink="/packs/community">
+            <p class="w-100 m-0">Community Packs</p>
         </div>
-        <div class="option animate__animated animate__zoomIn animate__slow">
-            <p class="w-100 m-0">Create your pack</p>
-        </div>
-    </div>
-</main>
-<!--
-<main class="body flex-center flex-column mx-4">
-    <nav>
-        <a class="fs-5 menuOption link text-center">Submit your own pack</a>
-    </nav>
-    <div class="packs pb-5 my-2">
-        <h2 class="m-5 text-light fs-1">Community Packs:</h2>
-        <div class="result">
-            <div *ngFor="let pack of packs">
-                <div class="cell" (click)="onDetailsClick(pack)">
-                    <img src="{{ randomPic(pack) }}" alt="pack">
-                    <p class="bottom">{{pack.nome}}</p>
-                </div>
-            </div>
+        <div class="option animate__animated animate__zoomIn animate__slow"  routerLink="/packs/create">
+            <p class="w-100 m-0">Request your pack</p>
         </div>
     </div>
 </main>
-
-Pop up conferma
-<div *ngIf="popUp" class="popUp position-fixed top-0 start-0 w-100 h-100 flex-center">
-    <div class="popUpBody">
-        <p>are you sure to add {{qty}} emoji to your list?</p>
-        <div class="emojiList">
-            <div *ngFor="let pack of packDetails" >
-                <img src="{{pack}}" alt="pack" width="48px" height="48px">
-            </div>
-        </div>
-        <div>
-            <a class="btn btn-secondary" (click)="confirmNo()">No</a>
-            <a class="btn btn-success" (click)="confirmYes()">Yes</a>
-        </div>
-    </div>
-</div>-->

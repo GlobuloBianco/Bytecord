@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+
+<main class="body">
+    <section class="flex-center flex-column w-100 h-100 bg-secondary section">
+        <form (ngSubmit)="onSubmit()">
+
+            <p class="text-light">Pack name</p>
+            <input type="text" name="packName" [(ngModel)]="packName" placeholder="Your pack name">
+
+            <button class="auth-submit" type="submit" disabled>SIGN IN</button>
+        </form>
+        <div class="w-100 h-100 bg-info d-flex flex-column align-items-center">
+            <p class="text-light text-center">your emojis</p>
+            <div class="w-75 h-75 bg-secondary rounded-4 d-flex flex-wrap">
+                <div *ngFor="let emoji of displayList" class="animate__animated animate__zoomIn animate__fast">
+                    <!-- Se non è vuoto allora metti in display-->
+                    <div *ngIf="emoji != '' " class="cell position-relative">
+                        <!-- Emoji in display-->
+                        <div (click)="add(emoji)">
+                            <img [src]="emoji" class="img-fluid emoji" onerror="this.src='assets/not-found.png'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="flex-center flex-column w-100 h-100 bg-success section">
+        <p class="text-light"> {{ packName }} <span *ngIf="packName == ''">Your pack name</span></p>
+        <div class="w-75 h-75 bg-secondary rounded-4 d-flex flex-wrap">
+            <div *ngFor="let emoji of requestList" class="animate__animated animate__zoomIn animate__fast">
+                <!-- Se non è vuoto allora metti in display-->
+                <div *ngIf="emoji != '' " class="cell position-relative">
+                    <!-- Emoji in display-->
+                    <div (click)="remove(emoji)">
+                        <img [src]="emoji" class="img-fluid emoji" onerror="this.src='assets/not-found.png'">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a (click)="onSubmit()" class="btn btn-primary" >request pack!</a>
+    </section>
+</main>

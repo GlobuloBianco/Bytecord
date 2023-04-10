@@ -10,13 +10,19 @@ import { AdminGuard } from './guards/admin.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PacksComponent } from './components/dashboard/d-packs/packs.component';
 import { PackWorkshopComponent } from './components/pack-workshop/pack-workshop.component';
+import { WsPacksComponent } from './components/pack-workshop/ws-packs/ws-packs.component';
+import { WsCreateComponent } from './components/pack-workshop/ws-create/ws-create.component';
 
 const routes: Routes = [
     // start section
     { path: '', component: StarterComponent },
     // -------- components section -------- //
     { path: 'emoji', component: EmojiComponent, canActivate: [AuthGuard] },
+    //workshop
     { path: 'packs', component: PackWorkshopComponent, canActivate: [AuthGuard] },
+    { path: 'packs/create', component: WsCreateComponent, canActivate: [AuthGuard] },
+    { path: 'packs/:type', component: WsPacksComponent, canActivate: [AuthGuard] },
+
     // auth section
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
@@ -26,8 +32,8 @@ const routes: Routes = [
 
     // default route
     { path: '', redirectTo: '/', pathMatch: 'full' },
-    { path: 'error/:reason', component: Error404Component},
-    { path: '**', component: Error404Component}
+    { path: 'error/:reason', component: Error404Component },
+    { path: '**', component: Error404Component }
 ];
 
 @NgModule({
