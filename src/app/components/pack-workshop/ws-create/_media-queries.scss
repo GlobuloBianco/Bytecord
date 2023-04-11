@@ -2,8 +2,14 @@
     .body {
         display: flex;
         flex-direction: row!important;
+        height: calc(100vh - 70px)!important;
+        .inputBar { padding-top: 0!important;}
     }
     .section {
         width: 50%!important;
+        &:nth-last-child(1) {
+            border-left: 2px solid white;
+            margin-top: 0px!important;
+        }
     }
 }

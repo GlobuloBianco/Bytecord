@@ -7,7 +7,7 @@
     padding: 2em;
     .edit {
         //edit mode
-        background-color: #fbff0048;
+        background-color: #80808042;
         border-radius: 0px;
     }
     // ---------- toolbar ---------- //
@@ -15,10 +15,11 @@
         display: flex;
         justify-content: center;
         width: 100%;
-        border: 3px solid gray;
-        border-radius: 15px;
-        max-width: 768px;
+        border-radius: 10px;
+        max-width: 1000px;
+        background-color: transparent;
         background-color: #383A40;
+        box-shadow: 0 0 10px #0000002b;
     }
     .select {
         cursor: pointer;
@@ -29,48 +30,44 @@
         width: 100px;
         text-align: center;
         transition: 0.7s;
+        &:hover, &:active {
+            background-color: #8080801a;
+        }
         &:nth-child(1) {
             &:hover,
             &:active {
-                background-color: #ff000020;
                 border-radius: 10px 0 0 10px;
             }
             .bi {
                 color: red;
-                font-size: 1.1em;
+                font-size: 1.3em;
             }
         }
         &:nth-child(2) {
             border-radius: 0;
-            &:hover,
-            &:active {
-                background-color: #fbff0048;
-            }
             .bi {
                 color: yellow;
-                font-size: 1.1em;
+                font-size: 1.3em;
             }
         }
         &:nth-child(3) {
             &:hover,
             &:active {
-                background-color: #00ff3720;
                 border-radius: 0px;
             }
             .bi {
                 color: lightgreen;
-                font-size: 1.1em;
+                font-size: 1.3em;
             }
         }
         &:nth-child(4) {
             &:hover,
             &:active {
-                background-color: #0011ff48;
                 border-radius: 0 10px 10px 0;
             }
             .bi {
                 color: #427dfc;
-                font-size: 1.1em;
+                font-size: 1.3em;
             }
         }
     }

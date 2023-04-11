@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { EmojiService } from 'src/app/services/emoji.service';
 import { PacksService } from 'src/app/services/packs.service';
@@ -18,7 +18,7 @@ export class WsPacksComponent implements OnInit {
     popUp: boolean = false;
     packDetails: string[] = [];
 
-    constructor(private packsService: PacksService, private http: HttpClient, private authService: AuthService, private emojiService: EmojiService, private userService: UserService, private route: ActivatedRoute) { }
+    constructor(private packsService: PacksService, private http: HttpClient, private authService: AuthService, private emojiService: EmojiService, private userService: UserService, private route: ActivatedRoute, private router: Router) { }
 
     ngOnInit(): void {
         this.getAllPacks();
@@ -27,8 +27,8 @@ export class WsPacksComponent implements OnInit {
     getAllPacks() {
         let type: string = this.route.snapshot.paramMap.get('type')?.toUpperCase() || "";
         if (type == "") return console.error("Error: Not a valid path:" + type);
-        if (type == "DEFAULT") (this.getData(type), this.title = "Default Packs"); // Sezione pack default
-        if (type == "COMMUNITY") (this.getData("APPROVED"), this.title = "Community Packs"); // sezione pack Community
+        if (type == "DEFAULT") (this.getData(type), this.title = type); // Sezione pack default
+        if (type == "COMMUNITY") (this.getData("APPROVED"), this.title = type); // sezione pack Community
     }
 
     getData = (type: String) => {
@@ -56,6 +56,7 @@ export class WsPacksComponent implements OnInit {
                     this.emojiService.updateEmojiList(this.emojiService.commaFix(this.emojiService.toDatabaseFormat(finalList))).subscribe(
                         (response => {
                             this.popUp = false;
+                            this.router.navigate(['/emoji'])
                         })
                     );
                 }

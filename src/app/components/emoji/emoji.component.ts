@@ -44,6 +44,14 @@ export class EmojiComponent implements OnInit {
     addEmoji() {
         let emojiUrl = this.addInput.trim(); // per eventuali spazi extra
         this.addInput = '';
+                // check duplicati
+        if (this.displayList.includes(emojiUrl)) {
+            this.errorInput = "The desired Emoji is already in the list!.";
+            setTimeout(() => {
+                this.errorInput = "";
+            }, 3000);
+            return;
+        }
         // check length dell url <=1 e >=150
         if (emojiUrl.length <= 1) return;
         if (emojiUrl.length >= 150) {
@@ -68,11 +76,11 @@ export class EmojiComponent implements OnInit {
             }, 3000);
             return;
         }
-        let result = [this.emojiList, emojiUrl].join(", ");
+        let result = [emojiUrl, this.emojiList].join(", ");
         result.trim();  //double check :)
         result.startsWith(",") ? (result = result.slice(1), result.trim()) : null
         // Invia la richiesta POST al backend per aggiornare la lista dell'utente
-        this.emojiService.updateEmojiList(result).subscribe((response => { }));
+        this.emojiService.updateEmojiList(result).subscribe();
         this.update(); //check lista vuota
         this.getList();
     }
@@ -82,7 +90,6 @@ export class EmojiComponent implements OnInit {
     // --------------- Salvataggio su clipboard --------------- //
     copyClipboard = (emoji: string) => {
         navigator.clipboard.writeText(emoji);
-        console.log("copiato");
     }
 
     //------------ // ---------------[ Sezione Settings ]--------------- //------------ //
@@ -103,7 +110,7 @@ export class EmojiComponent implements OnInit {
         // rimuovere le [ ] e "  dalla stringa e aggiunta di spazio dopo ogni virgola.
         this.emojiList = this.emojiService.toDatabaseFormat(lista.join(', '));
         this.emojiList = this.emojiList || " ";
-        this.emojiService.updateEmojiList(this.emojiList).subscribe((response => { }));
+        this.emojiService.updateEmojiList(this.emojiList).subscribe();
         this.getList();
     }
     // --------------- Import --------------- //
@@ -146,7 +153,7 @@ export class EmojiComponent implements OnInit {
     addImported() {
         const fixedList = this.emojiService.commaFix(this.importedList.toString());
         let result = [this.emojiList, fixedList].join(", ");
-        this.emojiService.updateEmojiList(result).subscribe((response => { }));
+        this.emojiService.updateEmojiList(result).subscribe();
         this.confirmed();
         this.toggleSettings();
         this.getList();
@@ -177,7 +184,7 @@ export class EmojiComponent implements OnInit {
         this.deleteConfirm = true;
     }
     deleted = () => {
-        this.emojiService.updateEmojiList(" ").subscribe((response => { }));
+        this.emojiService.updateEmojiList(" ").subscribe();
         this.confirmed();
         this.toggleSettings();
         this.getList();

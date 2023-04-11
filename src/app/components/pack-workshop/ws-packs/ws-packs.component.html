@@ -1,9 +1,13 @@
 <app-navbar></app-navbar>
 
-<main class="body flex-center flex-column mx-4 position-relative">
-    <a routerLink="/packs" class="position-absolute top-0 start-0 my-3 back"><i class="bi bi-arrow-left-square"></i> Go Back</a>
-    <div class="packs pb-5 my-2">
-        <h2 class="m-5 text-light fs-1">{{ title }}:</h2>
+<main class="body d-flex justify-content-start align-items-center flex-column px-4 position-relative"
+        [class.default]="title == 'DEFAULT' " [class.community]="title == 'COMMUNITY' ">
+    <a routerLink="/packs" class="position-absolute top-0 start-0 my-4 back"><i class="bi bi-arrow-left-square"></i> Go Back</a>
+    <h2 class="mt-5 pt-5 text-light fs-1 title fw-bold" style="text-shadow: 0 0 20px black;">
+        <span style="color: lightgreen;" [class.text-danger]="title == 'COMMUNITY' ">{{ title }}</span> Packs:
+    </h2>
+    <div class="w-25 bg-light my-2" style="height: 1px; opacity: 0.3;"></div>
+    <div class="packs my-2">
         <div class="result">
             <div *ngFor="let pack of packs">
                 <div class="cell" (click)="onDetailsClick(pack)">
@@ -18,15 +22,15 @@
 <!--Pop up conferma-->
 <div *ngIf="popUp" class="popUp position-fixed top-0 start-0 w-100 h-100 flex-center">
     <div class="popUpBody">
-        <p>are you sure to add {{qty}} emoji to your list?</p>
+        <p class="mx-2 text-center">Are you sure to add <span class="text-info fw-bold">{{qty}}</span> emoji to your list?</p>
         <div class="emojiList">
             <div *ngFor="let pack of packDetails" >
-                <img src="{{pack}}" alt="pack" width="48px" height="48px">
+                <img src="{{pack}}" class="emoji" alt="pack" width="48px" height="48px">
             </div>
         </div>
-        <div>
-            <a class="btn btn-secondary" (click)="confirmNo()">No</a>
-            <a class="btn btn-success" (click)="confirmYes()">Yes</a>
+        <div class="w-100 d-flex">
+            <a class="button" (click)="confirmNo()">NO</a>
+            <a class="button" (click)="confirmYes()">YES</a>
         </div>
     </div>
 </div>

@@ -1,88 +1,116 @@
+@import 'media-queries';
+
 .body {
     height: auto;
     min-height: calc(100vh - 70px);
     background-color: #2E3035;
-    //background: url('../../../assets/bg/bg-workshop.svg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     border-top: 2px solid black;
-}
-.packs {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: column;
-    padding: 0.5em;
-    text-align: center;
-    background-color: #00000066;
-    border-radius: 10px;
-    max-width: 700px;
-    .result {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-}
-
-.cell {
-    position: relative;
-    text-align: center;
-    width: 120px;
-    margin: 1em;
-    cursor: pointer;
-    border: 7px solid white;
-    background-color: black;
-    box-shadow: 1px 1px 5px black;
-    transition: 0.7s;
-    -webkit-user-drag: none;
-    user-select: none;
-    img {
-        width: 100%;
-        aspect-ratio: 1;
-    }
-    .bottom {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        font-weight: 700;
-        font-size: 1.3em;
+    overflow-x: hidden;
+    //back btn
+    .back {
         color: white;
-        padding: 0.7em;
-        background-color: #00000050;
-        text-shadow: 1px 1px 5px black;
-        transition: 0.7s;
+        font-size: 1rem;
+        background-color: #2E3035;
+        box-shadow: 0 0 5px #00000082;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-left: 2em;
+        padding: 0.6em 1em;
+        transition: .7s;
         &:hover {
-            background-color: transparent;
-            transform: scale(1.3);
+            background-color: #4D5057;
         }
     }
-    &:hover {
-        transform: scale(0.9);
-    }
-    &:active {
-        transform: scale(1.1);
+    // packs container
+    .packs {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: auto;
+        height: auto;
+        max-width: 1300px;
+        flex-wrap: wrap;
+        flex-direction: column;
+        padding: 0.5em;
+        text-align: center;
+        background-color: transparent;
+        box-shadow: 1px 1px 5px black;
+        border-radius: 10px;
+        //requested/fetched list container
+        .result {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            //single pack cell
+            .cell {
+                position: relative;
+                text-align: center;
+                width: 120px;
+                margin: 1em;
+                cursor: pointer;
+                border: 7px solid white;
+                background-color: black;
+                box-shadow: 1px 1px 5px black;
+                transition: 0.7s;
+                -webkit-user-drag: none;
+                user-select: none;
+                img {
+                    width: 100%;
+                    aspect-ratio: 1;
+                }
+                //inside text
+                .bottom {
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    font-weight: 700;
+                    font-size: 1.3em;
+                    color: white;
+                    padding: 0.7em;
+                    background-color: #00000050;
+                    text-shadow: 1px 1px 5px black;
+                    transition: 0.7s;
+                    &:hover {
+                        background-color: transparent;
+                        transform: scale(1.3);
+                    }
+                }
+                &:hover {
+                    transform: scale(0.9);
+                }
+                &:active {
+                    transform: scale(1.1);
+                }
+            }
+        }
     }
 }
-
-//popup
+// ----- PopUp ----- //
 .popUpBody {
-    background-color: black;
-    color: white;
-    width: 100%;
-    max-width: 400px;
-    height: 70vh;
-    margin: 3em;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     flex-direction: column;
+    color: white;
+    width: 100%;
+    max-width: 400px;
+    height: 70vh;
+    margin: 3em;
+    background-color: #2E3035;
+    border: 4px solid white;
+    box-shadow: 2px 2px 30em black;
+    border-radius: 20px;
+    p { font-size: 1.3em; }
+    //list of emoji nel pack
     .emojiList {
         display: flex;
         justify-content: center;
@@ -90,25 +118,47 @@
         overflow: auto;
         width: 85%;
         height: 50%;
-        background-color: gray;
+        border-radius: 20px 0 0 0px;
+        background-color: transparent;
+        box-shadow: 0 0 5px black;
         margin: 2em;
+        padding: 1em;
+        .emoji {
+            margin: .2rem;
+        }
+    }
+    //confirm btns
+    .button {
+        width: 50%;
+        color: white;
+        text-align: center;
+        font-size: 1rem;
+        padding: 0.5em 0;
+        margin: 0.5em 2em;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: .7s;
+        cursor: pointer;
+        &:hover {
+            background-color: #1c1d20;
+        }
+        &:nth-child(1) {
+            border: 2px solid #ffffff;
+        }
+        &:nth-child(2) {
+            color: #00c22d;
+            border: 2px solid #00c22d;
+        }
     }
 }
-
-.menuOption {
-    width: 100%;
-    color: var(--main-color);
-    opacity: 0.7;
-    background-color: #00000004;
-    border-radius: 5px;
-    text-align: center;
-    transition: 1s;
-    padding: 0.7em 1.3em;
-    margin: 0.2em;
-    &:hover,
-    &:active {
-        text-decoration: none;
-        color: black;
-        background-color: #dadada;
-    }
+// ----- Background ----- //
+.default {
+    background: url("../../../../assets/bg/workshop-packs/bg-circle-default.svg");
+    background-size: cover;
+    background-position: center;
+}
+.community {
+    background: url("../../../../assets/bg/workshop-packs/bg-circle-community.svg");
+    background-size: cover;
+    background-position: center;
 }

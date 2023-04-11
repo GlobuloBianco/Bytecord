@@ -7,5 +7,62 @@
     align-items: flex-start;
     flex-direction: column;
     width: 100vw;
-    height: calc(100vh - 70px);
+    min-height: calc(100vh - 70px);
+    height: auto;
+    .section {
+        &:nth-last-child(1) {
+            margin-top: 2em;
+        }
+    }
+    .inputBar {
+        padding-top: 3em;
+        .input {
+            background-color: #383a40;
+            color: white;
+            border: none;
+            text-align: center;
+            padding: 0.6em;
+            font-size: 1.3em;
+            border-radius: 10px;
+            max-height: 48px;
+            width: 60%;
+            &:focus {
+                box-shadow: none;
+            }
+            &::placeholder {
+                color: var(--main-color);
+                opacity: 0.5;
+            }
+        }
+        .submit {
+            border-radius: 10px;
+            margin-left: 1em;
+            color: #5865F2;
+            transition: .7s;
+            &:disabled {
+                color: gray;
+            }
+        }
+    }
+    .list {
+        width: 75%;
+        height: 60vh;
+        overflow: auto;
+        box-shadow: 0 0 10px black;
+        border-radius: 20px;
+        user-select: none;
+        -webkit-user-drag: none;
+        .emoji {
+            cursor: pointer;
+            padding: 0.5em;
+            box-shadow: 0 0 10px black;
+            transition: .5s;
+            &:hover {
+                transform: translateY(-4px);
+            }
+            &:active {
+                transform: translateY(10px);
+            }
+        }
+    }
 }
