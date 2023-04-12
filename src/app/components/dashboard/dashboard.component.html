@@ -1,19 +1,12 @@
 <app-navbar></app-navbar>
 
-<main class="w-100 flex-center pt-5 flex-wrap">
-    <div class="option">
-        <a routerLink="/dashboard/info" class="text-light">General Info</a>
+<main class="w-100 flex-center pt-5 body">
+    <div class="d-flex justify-content-evenly flex-wrap w-100">
+        <div class="option animate__animated animate__zoomIn animate__faster" routerLink="/dashboard/packs">
+            <p class="w-100 m-0">Show Packs</p>
+        </div>
+        <div class="option animate__animated animate__zoomIn animate__fast" routerLink="/dashboard/approve">
+            <p class="w-100 m-0">Approve User Packs</p>
+        </div>
     </div>
-    <div class="option" routerLink="/dashboard/packs">
-        <a class="text-light">Show Packs</a>
-    </div>
-    <div class="option">
-        <a routerLink="/dashboard/approve" class="text-light">Approve User Packs</a>
-    </div>
-    <div class="option">
-        <a class="text-light">Coming Soon</a>
-    </div>
-
 </main>
-
-

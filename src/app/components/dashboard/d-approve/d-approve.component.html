@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<main>
+    <!--container-->
+    <div class=" mx-3 d-flex justify-content-center align-items-start mt-5" *ngFor="let pack of packsList">
+        <!--pack-->
+        <div class="pack w-75">
+            <p class="m-0 p-3" (click)="flag = !flag">
+                <i class="bi bi-box2-heart"></i> {{ pack.nome }} &nbsp;
+                <i class="bi bi-calendar-event"></i> {{ calcDate(pack.data) }}
+            </p>
+            <!--collapse-->
+            <div class="collapse" [class.show]="flag">
+                <!--lista-->
+                <div class="flex-center">
+                    <div *ngFor="let emoji of toArray(pack.lista)"
+                        class="animate__animated animate__zoomIn animate__fast">
+                        <!-- Emoji -->
+                        <div class="emoji m-2">
+                            <img [src]="emoji" class="img-fluid emoji" onerror="this.src='assets/not-found.png'"
+                                width="48px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</main>

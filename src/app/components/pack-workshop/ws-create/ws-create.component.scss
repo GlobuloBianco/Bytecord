@@ -1,4 +1,4 @@
-@import 'media-queries';
+@import "media-queries";
 
 .body {
     padding: 2em 0;
@@ -15,11 +15,10 @@
         }
     }
     .inputBar {
-        padding-top: 3em;
+        padding-top: 5em;
         .input {
             background-color: #383a40;
             color: white;
-            border: none;
             text-align: center;
             padding: 0.6em;
             font-size: 1.3em;
@@ -37,8 +36,8 @@
         .submit {
             border-radius: 10px;
             margin-left: 1em;
-            color: #5865F2;
-            transition: .7s;
+            color: #5865f2;
+            transition: 0.7s;
             &:disabled {
                 color: gray;
             }
@@ -50,13 +49,17 @@
         overflow: auto;
         box-shadow: 0 0 10px black;
         border-radius: 20px;
+        padding: 5px;
         user-select: none;
         -webkit-user-drag: none;
+        border: 7px solid white;
         .emoji {
             cursor: pointer;
             padding: 0.5em;
+            border-radius: 100px;
             box-shadow: 0 0 10px black;
-            transition: .5s;
+            background-color: #ffffff36;
+            transition: 0.5s;
             &:hover {
                 transform: translateY(-4px);
             }
@@ -64,5 +67,41 @@
                 transform: translateY(10px);
             }
         }
+        &::-webkit-scrollbar-track {
+            background-color: transparent;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+        }
+        &::-webkit-scrollbar {
+            background-color: transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: #eeeeee7d;
+        }
+    }
+    .list-1 {
+        background: url("../../../../assets/bg/workshop-packs/bg-create-1.svg");
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+    }
+    .list-2 {
+        background: url("../../../../assets/bg/workshop-packs/bg-create-2.svg");
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+    }
+}
+.back {
+    color: white;
+    font-size: 1rem;
+    background-color: #2e3035;
+    box-shadow: 0 0 5px #00000082;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-left: 2em;
+    padding: 0.6em 1em;
+    transition: 0.7s;
+    &:hover {
+        background-color: #4d5057;
     }
 }

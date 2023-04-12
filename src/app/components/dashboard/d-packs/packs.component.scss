@@ -1,25 +1,82 @@
+.list {
+    box-shadow: 0 0 20px black;
+    padding: 2em;
+    border-radius: 20px;
+    margin: 2em;
+}
 .pack {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 200px;
-    background-color: gray;
-    border-radius: 5px;
-    padding: 0.5em 1em;
     border: 4px solid white;
-    aspect-ratio: 5/2;
-    img {
-        background-color: white;
-        margin-left: 0;
-        aspect-ratio: 1;
-        border-radius: 100%;
-        border: 4px solid white;
-
-        //border-right: 4px solid white;
-    }
+    max-width: 150px;
+    border-radius: 20px 0 20px 0;
+    margin: 1em;
+    background-color: gray;
+    background: url(../../../../assets/bg/btn-blob.svg);
+    box-shadow: 0 0 10px black;
     cursor: pointer;
-    transition: 0.7s;
+    transition: 0.5s;
     &:hover {
-        transform: scale(1.1);
+        transform: translateY(-4px);
+    }
+    &:active {
+        transform: translateY(10px);
+    }
+    &:hover > .emoji {
+        background-color: #ff000065;
+    }
+    .emoji {
+        cursor: pointer;
+        padding: 1em;
+        border-radius: 100px;
+        box-shadow: 0 0 10px black;
+        background-color: #ffffff36;
+        transition: 1s;
+        img {
+            box-shadow: 0 0 10px black;
+            border-radius: 100px;
+            width: 100px;
+            height: 100px;
+            padding: 1em;
+        }
+    }
+}
+
+.popUp {
+    & > div {
+        border-radius: 20px;
+        width: 100%;
+        height: auto;
+        max-width: 400px;
+        background-color: #4e5054;
+        text-align: center;
+        line-height: 200%;
+        border: 4px solid white;
+        box-shadow: 0 0 5em black;
+        margin: 20px;
+        padding: 2em;
+    }
+    .confirmBtn {
+        font-size: 1.1rem;
+        color: white;
+        padding: 0.3em 0.6em;
+        margin: 0.5em 1em;
+        width: 100px;
+        border-radius: 5px;
+        border: 2px solid gray;
+        background-color: #303030;
+        transition: 0.7s;
+        cursor: pointer;
+        &:hover,
+        &:active {
+            background-color: #4e5054;
+        }
+    }
+    .deleteYes {
+        font-weight: bold;
+        color: red;
+        border: 2px solid #ff00009d;
+        &:hover,
+        &:active {
+            background-color: #ff000034;
+        }
     }
 }

@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
 <!-- Creazione -->
-<main class="body">
+<main class="body position-relative">
+    <a routerLink="/packs" class="position-absolute top-0 start-0 my-4 back"><i class="bi bi-arrow-left-square"></i> Back</a>
     <section class="flex-center flex-column w-100 h-100 section">
         <div class="d-flex justify-content-center w-100 inputBar">
             <input class="input" type="text" name="packName" [(ngModel)]="packName" placeholder="Your pack name"
@@ -12,7 +13,7 @@
             <span>{{ status }}</span>
         </p>
         <!--personal emoji container-->
-        <div class="list py-3 justify-content-center d-flex flex-wrap">
+        <div class="list list-1 py-3 justify-content-center d-flex flex-wrap">
             <div *ngFor="let emoji of displayList" class="animate__animated animate__zoomIn animate__fast">
                 <div *ngIf="emoji != '' ">
                     <!-- Emoji -->
@@ -25,14 +26,14 @@
     </section>
     <!-- Preview -->
     <section class="flex-center flex-column w-100 h-100 section">
-        <p class="text-secondary mb-4">
+        <p class="text-light mb-4">
             ( <i class="bi bi-arrow-down-circle"></i> Pack Preview | Click unwanted emoji to delete <i class="bi bi-arrow-down-circle"></i> )
         </p>
         <p class="text-light fs-1 fw-bold text-center mb-4">
             <span *ngIf="packName != ''"> {{ capitalCase(packName) }} Pack</span>
-            <span *ngIf="packName == ''">Pack Name</span>
+            <span *ngIf="packName == ''">ㅤ</span>
         </p>
-        <div class="list py-3 justify-content-center d-flex flex-wrap align-items-start">
+        <div class="list list-2 py-3 justify-content-center d-flex flex-wrap align-items-start">
             <div *ngFor="let emoji of requestList" class="animate__animated animate__zoomIn animate__fast">
                 <!--Result preview container-->
                 <div *ngIf="emoji != '' ">

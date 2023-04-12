@@ -12,24 +12,24 @@ import { PacksComponent } from './components/dashboard/d-packs/packs.component';
 import { PackWorkshopComponent } from './components/pack-workshop/pack-workshop.component';
 import { WsPacksComponent } from './components/pack-workshop/ws-packs/ws-packs.component';
 import { WsCreateComponent } from './components/pack-workshop/ws-create/ws-create.component';
+import { DApproveComponent } from './components/dashboard/d-approve/d-approve.component';
 
 const routes: Routes = [
     // start section
     { path: '', component: StarterComponent },
+    // -------- Auth section -------- //
+    { path: 'login', component: LoginComponent },
+    { path: 'signup', component: SignupComponent },
     // -------- components section -------- //
     { path: 'emoji', component: EmojiComponent, canActivate: [AuthGuard] },
     //workshop
     { path: 'packs', component: PackWorkshopComponent, canActivate: [AuthGuard] },
     { path: 'packs/create', component: WsCreateComponent, canActivate: [AuthGuard] },
     { path: 'packs/:type', component: WsPacksComponent, canActivate: [AuthGuard] },
-
-    // auth section
-    { path: 'login', component: LoginComponent },
-    { path: 'signup', component: SignupComponent },
     // dashboard section
     { path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard] },
     { path: 'dashboard/packs', component: PacksComponent, canActivate: [AdminGuard] },
-
+    { path: 'dashboard/approve', component: DApproveComponent, canActivate: [AdminGuard] },
     // default route
     { path: '', redirectTo: '/', pathMatch: 'full' },
     { path: 'error/:reason', component: Error404Component },

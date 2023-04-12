@@ -1,0 +1,22 @@
+.pack {
+    border: 4px solid white;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.emoji {
+    cursor: pointer;
+    padding: 0.5em;
+    border-radius: 100px;
+    box-shadow: 0 0 10px black;
+    background-color: #ffffff36;
+    transition: 0.5s;
+    &:hover {
+        transform: translateY(-4px);
+    }
+    &:active {
+        transform: translateY(10px);
+    }
+}

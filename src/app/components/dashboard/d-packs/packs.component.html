@@ -1,20 +1,28 @@
 <app-navbar></app-navbar>
 <main class="flex-center pt-5 w-100 flex-column">
-    <h2 class="text-light">Available Packs:</h2>
-    <section class="flex-center flex-wrap" *ngIf="packs">
+    <h2 class="text-light fs-1 fw-bold">Available Packs:</h2>
+    <section class="d-flex justify-content-center align-items-start flex-wrap mx-5 list" *ngIf="packs">
         <!--response-->
-        <div *ngFor="let pack of packs" class="pack m-2">
-            <div>
-                <div class="flex-center rounded-circle">
-                    <img src="{{pack.lista}}" alt="pack">
+        <div *ngFor="let pack of packs">
+            <div (click)="delete(pack)" class="pack">
+                <div class="emoji m-2 flex-center">
+                    <img class="" src="{{pack.lista}}" alt="pack" width="48px" height="48px">
                 </div>
-                <div class="flex-grow-1 text-center">
+                <div class="text-center fs-5 fw-medium border-top border-4 p-2 border-light flex-wrap">
                     <p class="text-light m-0">{{pack.nome}}</p>
                 </div>
             </div>
-
-
         </div>
     </section>
-
 </main>
+
+<!--PopUp-->
+<div *ngIf="confirmFlag" class="position-fixed top-0 start-0 w-100 h-100 popUp flex-center">
+    <div class="flex-center flex-column">
+        <p class="fw-bold fs-3">Are you sure you want to <span class="text-danger">delete</span> it?</p>
+        <div class="flex-center">
+            <button type="button" class="confirmBtn" (click)="confirmNo()">No</button>
+            <button type="button" class="confirmBtn deleteYes" (click)="confirmYes()">Yes</button>
+        </div>
+    </div>
+</div>

@@ -18,6 +18,7 @@ import { PacksComponent } from './components/dashboard/d-packs/packs.component';
 import { PackWorkshopComponent } from './components/pack-workshop/pack-workshop.component';
 import { WsPacksComponent } from './components/pack-workshop/ws-packs/ws-packs.component';
 import { WsCreateComponent } from './components/pack-workshop/ws-create/ws-create.component';
+import { DApproveComponent } from './components/dashboard/d-approve/d-approve.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { WsCreateComponent } from './components/pack-workshop/ws-create/ws-creat
         PacksComponent,
         PackWorkshopComponent,
         WsPacksComponent,
-        WsCreateComponent
+        WsCreateComponent,
+        DApproveComponent
     ],
     imports: [
         BrowserModule,

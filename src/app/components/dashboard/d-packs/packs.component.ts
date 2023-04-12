@@ -11,6 +11,8 @@ import { PacksService } from 'src/app/services/packs.service';
 })
 export class PacksComponent implements OnInit {
     packs: any = [];
+    confirmFlag: boolean = false;
+    currentPack: string = "";
     constructor(private packsService: PacksService, private http: HttpClient, private authService: AuthService) { }
 
     ngOnInit(): void {
@@ -25,4 +27,21 @@ export class PacksComponent implements OnInit {
             });
         });
     }
+
+    delete(e: any) {
+        this.currentPack = e.nome;
+        console.log(this.currentPack)
+        this.confirmFlag = !this.confirmFlag;
+    }
+
+    confirmNo = () => this.confirmFlag = false;
+
+    confirmYes = () => {
+        this.packsService.deletePack(this.currentPack)
+        .subscribe(() => {
+            this.confirmFlag = false;
+            this.getAllPacks();
+        });
+    }
+
 }
