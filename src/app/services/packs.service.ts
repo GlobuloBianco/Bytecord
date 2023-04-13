@@ -30,4 +30,9 @@ export class PacksService {
             const url = `${this.serverUrl}/api/packs/delete`;
             return this.http.post(url, packName, { responseType: 'text' });
         }
+
+        reviewPack(packName: string, decision: string): Observable<Object> {
+            const url = `${this.serverUrl}/api/packs/update/`+ decision;
+            return this.http.post(url, packName, { responseType: 'text' });
+        }
 }

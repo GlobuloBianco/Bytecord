@@ -1,9 +1,63 @@
+@import "media-queries";
+
 .pack {
+    max-width: 1000px;
+    margin: 0.5em;
     border: 4px solid white;
+    box-shadow: 0 0 20px white;
     background-color: black;
+    background-size: 150%;
+    background-repeat: no-repeat;
     color: white;
-    border-radius: 20px;
     cursor: pointer;
+    transition: .7s;
+    &:hover {
+        border: 4px solid #6dffaf;
+    }
+    &:hover > .collapse > .list {
+        border-top: 4px solid #6dffaf;
+    }
+    .collapse {
+        background-color: #2e3035;
+        cursor: default;
+        .list {
+            border-top: 4px solid white;
+            padding: 1.5em 0.5em;
+            max-height: 280px;
+            overflow: auto;
+            user-select: none;
+            -webkit-user-drag: none;
+            transition: .7s;
+        }
+    }
+}
+.confirmBtn {
+    font-size: 1.1rem;
+    color: white;
+    padding: 0.3em 0.6em;
+    margin: 0.5em 1em;
+    width: 100px;
+    background-color: #303030;
+    transition: 0.7s;
+    cursor: pointer;
+    &:nth-child(1) {
+        border: 4px solid #ff5c5c;
+        box-shadow: 1px 1px 20px #ff5c5c;
+        color: #ff5c5c;
+        &:hover,
+        &:active {
+            background-color: #512c2c;
+        }
+    }
+    &:nth-child(2) {
+        border: 4px solid #5cffa3;
+        box-shadow: 1px 1px 20px #5cffa3;
+        color: #5cffa3;
+        &:hover,
+        &:active {
+            background-color: #2e512c;
+        }
+    }
 }
 
 .emoji {
@@ -11,12 +65,44 @@
     padding: 0.5em;
     border-radius: 100px;
     box-shadow: 0 0 10px black;
-    background-color: #ffffff36;
+    background-size: contain;
     transition: 0.5s;
     &:hover {
         transform: translateY(-4px);
     }
     &:active {
         transform: translateY(10px);
+    }
+}
+
+.button {
+    font-size: 1.1rem;
+    color: white;
+    padding: 0.3em 0.6em;
+    margin: 0.5em 1em;
+    width: 100px;
+    background-color: #303030;
+    transition: 0.7s;
+    cursor: pointer;
+    border: 4px solid white;
+    box-shadow: 1px 1px 20px white;
+    color: white;
+    &:nth-child(1) {
+        &:hover,
+        &:active {
+            border: 4px solid #ff5c5c;
+            box-shadow: 1px 1px 20px #ff5c5c;
+            color: #ff5c5c;
+            background-color: #512c2c;
+        }
+    }
+    &:nth-child(2) {
+        &:hover,
+        &:active {
+            background-color: #2e512c;
+            border: 4px solid #5cffa3;
+            box-shadow: 1px 1px 20px #5cffa3;
+            color: #5cffa3;
+        }
     }
 }

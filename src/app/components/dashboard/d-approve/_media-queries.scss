@@ -1,0 +1,9 @@
+@media (min-width: 768px) {
+    .btnWrap {
+        display: flex;
+        justify-content: flex-end!important;
+        .confirmBtn {
+            margin: 0.5em!important;
+        }
+    }
+}

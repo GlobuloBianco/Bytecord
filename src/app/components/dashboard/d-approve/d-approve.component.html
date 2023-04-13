@@ -1,29 +1,39 @@
 <app-navbar></app-navbar>
-<main>
+<main class="mt-5">
+    <div class="d-flex justify-content-center w-75 mb-3 mx-auto">
+        <button type="button" class="button" (click)="collapse()"><i class="bi bi-arrows-collapse"></i> Collapse</button>
+        <button type="button" class="button" (click)="expand()"><i class="bi bi-arrows-expand"></i> Expand</button>
+    </div>
     <!--container-->
-    <div class=" mx-3 d-flex justify-content-center align-items-start mt-5" *ngFor="let pack of packsList">
+    <div class=" d-flex justify-content-center align-items-start" *ngFor="let pack of packsList">
         <!--pack-->
-        <div class="pack w-75">
-            <p class="m-0 p-3" (click)="flag = !flag">
-                <i class="bi bi-box2-heart"></i> {{ pack.nome }} &nbsp;
-                <i class="bi bi-calendar-event"></i> {{ calcDate(pack.data) }}
-            </p>
+        <div class="pack w-75 animate__animated animate__pulse animate__faster">
+            <div (click)="pack.flag = !pack.flag"
+                class="d-flex justify-content-between align-items-center p-3 position-relative"
+                [ngStyle]="{'background-image': getBackground(pack.randomBackground), 'background-size': '150%', 'background-repeat': 'no-repeat'}">
+                <p class="m-0 fw-bold fs-6"><i class="bi bi-box2-heart"></i> {{ pack.nome }}</p>
+                <p class="m-0"><i class="bi bi-calendar-event"></i> {{ calcDate(pack.data) }}</p>
+            </div>
             <!--collapse-->
-            <div class="collapse" [class.show]="flag">
+            <div class="collapse" [class.show]="pack.flag">
                 <!--lista-->
-                <div class="flex-center">
+                <div class="flex-center list flex-wrap">
                     <div *ngFor="let emoji of toArray(pack.lista)"
                         class="animate__animated animate__zoomIn animate__fast">
                         <!-- Emoji -->
-                        <div class="emoji m-2">
+                        <div class="emoji m-2"
+                            [ngStyle]="{'background-image': getBackground(pack.randomEmojiBackground)}">
                             <img [src]="emoji" class="img-fluid emoji" onerror="this.src='assets/not-found.png'"
                                 width="48px">
                         </div>
                     </div>
                 </div>
+                <!-- Confirm -->
+                <div class="flex-center btnWrap">
+                    <button type="button" class="confirmBtn" (click)="reject(pack)">Reject</button>
+                    <button type="button" class="confirmBtn" (click)="approve(pack)">Approve</button>
+                </div>
             </div>
-
         </div>
     </div>
-
 </main>
