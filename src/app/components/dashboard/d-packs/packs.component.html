@@ -4,11 +4,11 @@
     <section class="d-flex justify-content-center align-items-start flex-wrap mx-5 list" *ngIf="packs">
         <!--response-->
         <div *ngFor="let pack of packs">
-            <div (click)="delete(pack)" class="pack">
-                <div class="emoji m-2 flex-center">
+            <div (click)="delete(pack)" class="pack" *ngIf="pack.type == 'DEFAULT' || pack.type == 'APPROVED'">
+                <div class="emoji m-1 flex-center">
                     <img class="" src="{{pack.lista}}" alt="pack" width="48px" height="48px">
                 </div>
-                <div class="text-center fs-5 fw-medium border-top border-4 p-2 border-light flex-wrap">
+                <div class="text-center fs-5 fw-medium border-top border-4 p-2 border-light flex-wrap name">
                     <p class="text-light m-0">{{pack.nome}}</p>
                 </div>
             </div>

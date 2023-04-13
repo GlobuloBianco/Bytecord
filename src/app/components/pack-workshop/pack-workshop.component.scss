@@ -2,10 +2,8 @@
     height: auto;
     min-height: calc(100vh - 70px);
     background-color: #2E3035;
-    background: url('../../../assets/bg/bg-wave.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: #2e3035;
+    background: linear-gradient(180deg, #2e3035 0%, #323d66 100%);
     border-top: 2px solid black;
 }
 
@@ -18,6 +16,7 @@
     width: 25%;
     background-color: gray;
     border: 20px solid white;
+    box-shadow: 0 0 10px white;
     color: white;
     font-weight: bold;
     font-size: 2.5em;
@@ -25,10 +24,11 @@
     text-align: center;
     line-height: 150%;
     cursor: pointer;
+    user-select: none;
     margin: 1em;
     &:hover {
-        scale: (0.9);
-        font-size: 2.7em;
+        filter: brightness(70%);
+        scale: (1.1);
     }
     &:nth-child(1) {
         background: url("../../../assets/cards/simple-1.svg");

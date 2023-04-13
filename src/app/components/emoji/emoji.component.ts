@@ -44,7 +44,7 @@ export class EmojiComponent implements OnInit {
     addEmoji() {
         let emojiUrl = this.addInput.trim(); // per eventuali spazi extra
         this.addInput = '';
-                // check duplicati
+        // check duplicati
         if (this.displayList.includes(emojiUrl)) {
             this.errorInput = "The desired Emoji is already in the list!.";
             setTimeout(() => {
@@ -168,9 +168,11 @@ export class EmojiComponent implements OnInit {
         let a = document.createElement("a");
         let url = URL.createObjectURL(file);
         a.href = url;
-        a.download = "myEmojiList.txt";
-        document.body.appendChild(a);
-        a.click();
+        this.userService.getUsername().subscribe(response => {
+            a.download = response + ".txt";
+            document.body.appendChild(a);
+            a.click();
+        });
         //deleteAll la creazione
         setTimeout(() => {
             document.body.removeChild(a),

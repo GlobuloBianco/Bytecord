@@ -20,6 +20,16 @@
         background-color: transparent;
         background-color: #383A40;
         box-shadow: 0 0 10px #0000002b;
+        user-select: none;
+        a {
+            transition: .7s;
+            &:hover {
+                transform: translateY(-5px);
+            }
+            &:active {
+                transform: translateY(5px);
+            }
+        }
     }
     .select {
         cursor: pointer;
@@ -130,6 +140,7 @@
         background-color: #383a40;
         border-radius: 5px;
         height: auto;
+        user-select: none;
         .cell {
             display: flex;
             justify-content: center;

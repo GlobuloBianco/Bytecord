@@ -1,34 +1,10 @@
 .body {
     height: auto;
     min-height: calc(100vh - 70px);
-}
-.option {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    aspect-ratio: 1;
-    min-width: 150px;
-    width: 40%;
-    max-width: 300px;
-    background-color: gray;
-    transition: .7s;
-    cursor: pointer;
-    margin: 1em;
-    &:hover {
-        background-color: #656565;
-        transform: scale(1.1);
-    }
-}
-
-.body {
-    height: auto;
-    min-height: calc(100vh - 70px);
     background-color: #2E3035;
     border-top: 2px solid black;
-    background: url("../../../assets/bg/bg-workshop.svg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: #2e3035;
+    background: linear-gradient(180deg, #2e3035 0%, #22263a 100%);
 }
 
 .option {
@@ -36,10 +12,11 @@
     justify-content: center;
     align-items: center;
     aspect-ratio: 1;
-    min-width: 300px;
+    min-width: 400px;
     width: 25%;
     background-color: gray;
     border: 20px solid white;
+    box-shadow: 0 0 10px white;
     color: white;
     font-weight: bold;
     font-size: 2.5em;
@@ -47,27 +24,20 @@
     text-align: center;
     line-height: 150%;
     cursor: pointer;
+    user-select: none;
     margin: 1em;
-    &:hover {
-        scale: (0.9);
-        font-size: 2.7em;
-    }
     &:nth-child(1) {
         background: url("../../../assets/cards/simple-hover-1.svg");
         background-size: cover;
         transition: 1.5s;
-        &:hover {
-            background: url("../../../assets/cards/simple-1.svg");
-            background-size: cover;
-        }
+
     }
     &:nth-child(2) {
         background: url("../../../assets/cards/simple-hover-2.svg");
         background-size: cover;
         transition: 1.5s;
-        &:hover {
-            background: url("../../../assets/cards/simple-2.svg");
-            background-size: cover;
-        }
+    }
+    &:hover {
+        filter: brightness(70%);
     }
 }

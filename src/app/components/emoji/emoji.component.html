@@ -29,10 +29,12 @@
     </section>
     <!-- Errori & Messaggi -->
     <div *ngIf="errorInput !=''" class="w-100 flex-center">
-        <p class="text-danger fw-bold fs-6 text-center border border-danger p-1 px-3 rounded-1 editMessage">{{ errorInput }}</p>
+        <p class="text-danger fw-bold fs-6 text-center border border-danger p-1 px-3 rounded-1 editMessage">{{
+            errorInput }}</p>
     </div>
     <div *ngIf="modifyFlag" class="w-100 flex-center">
-        <p class="fw-bold fs-6 text-center p-1 px-3 rounded-1 editMessage" style="border: 2px solid #5865F2;">You are currently in edit mode.</p>
+        <p class="fw-bold fs-6 text-center p-1 px-3 rounded-1 editMessage" style="border: 2px solid #5865F2;">You are
+            currently in edit mode.</p>
     </div>
     <!---------------- EmojiList ---------------->
     <section class="result">
@@ -56,7 +58,10 @@
         </div>
     </section>
 </main>
-<div class="mascotte img"><img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/633c218c78fdb568bd88e308_Group%20482467.svg" alt=""></div>
+<!-- Mascotte -->
+<div class="mascotte img animate__animated animate__bounce animate__slow">
+    <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/633c218c78fdb568bd88e308_Group%20482467.svg">
+</div>
 <!------------------ Pop up settings ------------------>
 <div *ngIf="settingsFlag" class="settings flex-center">
     <div class="settingsBody flex-center flex-column position-relative">

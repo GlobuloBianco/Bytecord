@@ -37,7 +37,8 @@
         padding: 0.5em;
         text-align: center;
         background-color: transparent;
-        box-shadow: 1px 1px 5px black;
+        border: 6px solid #ffffffb8;
+        box-shadow: 1px 1px 50px #000000a5;
         border-radius: 10px;
         //requested/fetched list container
         .result {
@@ -125,6 +126,14 @@
         padding: 1em;
         .emoji {
             margin: .2rem;
+            box-shadow: 0 0 5px black;
+            padding: .5em;
+            border-radius: 5px;
+            transition: .5s;
+            &:hover {
+                cursor: pointer;
+                scale: (0.4);
+            }
         }
     }
     //confirm btns

@@ -30,8 +30,10 @@
 @media (min-width: 992px) {
     .main {
         max-width: 800px;
+        max-height: 480px;
         .logo {
-            width: 50%!important;
+            width: 70%!important;
+            aspect-ratio: 1;
         }
         .auth {
             width: 50%!important;
